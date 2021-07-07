@@ -14,4 +14,5 @@ sudo mount --rbind /sys sys
 sudo mount --rbind /dev dev
 sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
+sudo ln -sf /mnt/funtoo/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l

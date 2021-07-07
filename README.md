@@ -12,4 +12,5 @@ use this to restore the chroot. in other words, how you access the OS without bo
 5. make sure that in the var direcctory dev is your device prefix, boot is your boot partition number and root is your root partition number
 6. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches and save the download url to the url file in the aforementioned folder
 7. make sure the fstab file is correct for your system
-8. run sudo ./install.sh
+8. make sure time matches the desired file in /usr/share/zoneinfo
+9. run sudo ./install.sh
