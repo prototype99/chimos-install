@@ -1,6 +1,6 @@
 #notice
 ChimOS is currently only designed for uefi systems with a btrfs root and partition labels. feel free to request more unusual configurations obviously. some efforts have been made to add some flexibility via the var folder. It is recommended that you keep a backup OS.
-#contents
+#extra tools
 ##chroot.sh
 use this to restore the chroot. in other words, how you access the OS without booting into it.
 #instructions
@@ -9,6 +9,5 @@ use this to restore the chroot. in other words, how you access the OS without bo
 2. create a swap partition roughly equal to your ram
 3. create a btrfs root partition
 4. make sure that in the var direcctory dev is your device prefix, boot is your boot partition number and root is your root partition number
-5. run ./mount.sh
-6. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches
-7. run ./init.sh
+5. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches and save the download url to the url file in the aforementioned folder
+6. run sudo ./install.sh
