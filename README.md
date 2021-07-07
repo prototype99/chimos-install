@@ -9,5 +9,6 @@ use this to restore the chroot. in other words, how you access the OS without bo
 2. create a swap partition roughly equal to your ram
 3. create a btrfs root partition
 4. make sure that in the var direcctory dev is your device prefix, boot is your boot partition number and root is your root partition number
-4. run mount.sh
-5. download the stage 3 tarball from https://www.funtoo.org/Subarches , below is an example command
+5. run ./mount.sh
+6. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches
+7. run ./init.sh
