@@ -14,5 +14,8 @@ sudo mount --rbind /sys sys
 sudo mount --rbind /dev dev
 sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
-sudo ln -sf /mnt/funtoo/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
+sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
+mkdir ${root}/var/db/repos
+cd ${root}/var/db/repos
+git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l
