@@ -17,5 +17,6 @@ sudo cp ${var}fstab ${root}/etc/
 sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
 mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
-git clone -b funtoo https://github.com/prototype99/prototype99.git
+sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
+sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l
