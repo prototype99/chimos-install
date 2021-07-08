@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+
+source "${PALUDIS_EBUILD_DIR}/echo_functions.bash"
+
+old_set=$-
+set -a
+for f in ${PALUDIS_BASHRC_FILES}; do
+    [[ -f "${f}" ]] && source "${f}"
+done
+[[ "${old_set}" == *a* ]] || set +a
+
+LOCAL=
+REMOTE=
+
+unset LANG ${!LC_*}
+export LC_ALL=C
+
+GIT_CLONE_OPTIONS=( )
+GIT_PULL_OPTIONS=( )
+GIT_FETCH_OPTIONS=( )
+
+GIT_BRANCH=
+GIT_REVISION=
+GIT_USE_RESET=true
+
+while [[ $# -gt 0 ]]; do
+    case "${1}" in
+
+        --git-clone-option=*)
+            GIT_CLONE_OPTIONS[${#GIT_CLONE_OPTIONS[@]}]="${1#*=}"
+            ;;
+
+        --git-pull-option=*)
+            GIT_PULL_OPTIONS[${#GIT_PULL_OPTIONS[@]}]="${1#*=}"
+            ;;
+
+        --git-fetch-option=*)
+            GIT_FETCH_OPTIONS[${#GIT_FETCH_OPTIONS[@]}]="${1#*=}"
+            ;;
+
+        --branch=*)
+            GIT_BRANCH="${1#*=}"
+            ;;
+
+        --revision=*)
+            GIT_REVISION="${1#*=}"
+            ;;
+
+        --reset)
+            ewarn "--reset is now the default for git syncers. It should no longer be specified manually."
+            GIT_USE_RESET=true
+            ;;
+
+        --no-reset)
+            GIT_USE_RESET=false
+            ;;
+
+        --help)
+            PROTO="${0##*/do}"
+            if [[ "${PROTO}" == git ]]; then
+                echo "    URL syntax: git://SERVER/PATH"
+            elif [[ "${PROTO}" == git+ssh ]]; then
+                echo "    URL syntax: git+ssh://[USERNAME[:PASSWORD]@]SERVER/PATH"
+            elif [[ "${PROTO}" == git+http || "${PROTO}" == git+https ]]; then
+                echo "    URL syntax: ${PROTO}://[USERNAME[:PASSWORD]@]SERVER[:PORT]/PATH"
+            elif [[ "${PROTO}" == git+file ]]; then
+                echo "    URL syntax: git+file:///PATH"
+            elif [[ "${PROTO}" == git+rsync ]]; then
+                echo "    URL syntax: git+rsync://[USERNAME@]SERVER[:PORT]/PATH"
+            else
+                ewarn "URL syntax for ${PROTO} is unknown.  This script will likely not work with the ${PROTO} protocol"
+            fi
+
+            echo "    Options:"
+            echo "        --branch=BRANCH                 Specify the branch to use"
+            echo "        --revision=REVISION             Specify the revision to use"
+            echo "        --git-clone-option=OPTION       Pass OPTION to git clone"
+            echo "        --git-pull-option=OPTION        Pass OPTION to git pull (if --no-reset)"
+            echo "        --git-fetch-option=OPTION       Pass OPTION to git fetch (unless --no-reset)"
+            echo "        --no-reset                      Use git pull instead of git fetch and git reset --hard"
+            exit 0
+            ;;
+
+        --*)
+            ewarn "${0}: unknown option '${1%%=*}'"
+            ;;
+
+        *)
+            if [[ -z "${LOCAL}" ]]; then
+                LOCAL="${1}"
+            elif [[ -z "${REMOTE}" ]]; then
+                REMOTE="${1}"
+            else
+                eerror "${0}: extra argument '${1}'"
+                exit 1
+            fi
+            ;;
+
+    esac
+    shift
+done
+
+if [[ -z "${LOCAL}" ]]; then
+    eerror "${0}: unspecified local repository directory"
+    exit 1
+elif [[ -z "${REMOTE}" ]]; then
+    eerror "${0}: unspecified remote repository URL"
+    exit 1
+fi
+
+[[ "${REMOTE}" == git+http* || "${REMOTE}" == git+rsync* ]] && REMOTE="${REMOTE#git+}"
+REMOTE="${REMOTE#git+file://}"
+
+if [[ -d "${LOCAL}" && ! -d "${LOCAL}/.git" ]]; then
+    eerror "'${LOCAL}' exists but it is not a Git repository"
+    exit 1
+fi
+
+if [[ -d "${LOCAL}" ]]; then
+    cd "${LOCAL}"
+    OLD_REMOTE="$(${GIT_WRAPPER} git config remote.origin.url)"
+    if [[ -z "${OLD_REMOTE}" && -f .git/remotes/origin ]]; then
+        OLD_REMOTE="$(sed -ne '/^URL: */{s/^URL: *//p;q}' .git/remotes/origin)"
+    fi
+    if [[ "${OLD_REMOTE}" != "${REMOTE}" ]]; then
+        if ! ${GIT_WRAPPER} git config remote.origin.url "${REMOTE}"; then
+            eerror "${0}: could not switch from '${OLD_REMOTE}' to '${REMOTE}'"
+            exit 1
+        fi
+    fi
+    cd - >/dev/null
+fi
+
+if [[ -d "${LOCAL}/.git" ]]; then
+    if ${GIT_USE_RESET} ; then
+        cd "${LOCAL}"
+        ${GIT_WRAPPER} git fetch "${GIT_FETCH_OPTIONS[@]}" origin || exit $?
+        ${GIT_WRAPPER} git reset --hard ${GIT_REVISION:-origin/${GIT_BRANCH:-master}} || exit $?
+    else
+        cd "${LOCAL}"
+        ${GIT_WRAPPER} git pull "${GIT_PULL_OPTIONS[@]}" origin ${GIT_REVISION:-${GIT_BRANCH}} || exit $?
+    fi
+else
+    ${GIT_WRAPPER} git clone "${GIT_CLONE_OPTIONS[@]}" "${REMOTE}" "${LOCAL}" || exit $?
+    cd "${LOCAL}" && ${GIT_WRAPPER} git reset --hard ${GIT_REVISION:-origin${GIT_BRANCH:+/${GIT_BRANCH}}} || exit $?
+fi
+

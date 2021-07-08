@@ -1,0 +1,1016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>resolve</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-resolve</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-resolve"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-resolve</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-resolve
+     — Display how to resolve one or more targets, and possibly then perform that resolution.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave resolve [ -x|--execute ] [ -z|--lazy or -c|--complete or -e|--everything ] spec …</strong></span></p>
+<p><span class="strong"><strong>cave resolve [ -x|--execute ] [ -z|--lazy or -c|--complete or -e|--everything ] set</strong></span></p>
+<p><span class="strong"><strong>cave resolve [ -x|--execute ] !spec …</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Displays how to resolve one or more targets. If instructed, then executes the relevant install and uninstall actions to perform that resolution.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>RESOLUTION OPTIONS</h2>
+
+<div class="refsect2"><h3>Execution Options</h3>
+
+<p>Control execution.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-x , --execute (+x , --no-execute)</strong></span>
+</span></dt><dd>
+
+        Execute the suggested actions
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Convenience Options</h3>
+
+<p>Broad behaviour options. These options are simply a convenient way of selecting common groups of other options; see individual option descriptions for exact details.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-z , --lazy (+z , --no-lazy)</strong></span>
+</span></dt><dd>
+
+        Do as little work as possible. Shorthand for '-Sb -sb -n'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-c , --complete (+c , --no-complete)</strong></span>
+</span></dt><dd>
+
+        Do all optional work. This option is often used when updating 'world'. Shorthand for '-ks -Rw -Sa -sa -B'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-e , --everything (+e , --no-everything)</strong></span>
+</span></dt><dd>
+
+        Do all optional work, and also always reinstall. Shorthand for '-kt -Sa -sa -B'.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Resolution Options</h3>
+
+<p>Resolution options.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-U , --permit-uninstall</strong></span>
+</span></dt><dd>
+
+        Permit uninstallation of packages matching the supplied specification, e.g. to resolve blockers. May be specified multiple times. Use '*/*' to allow all uninstalls, but note that the resolver will sometimes come up with extremely bad solutions to fixing blocks and may suggest stupid and dangerous uninstalls.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-d , --permit-downgrade</strong></span>
+</span></dt><dd>
+
+        Permit downgrades matching the supplied specification. Use '*/*' to allow all downgrades.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-o , --permit-old-version</strong></span>
+</span></dt><dd>
+
+        Permit installs of versions matching the supplied specification even if those versions are worse than the best visible version in the slot. Use '*/*' to allow all worse versions to be installed.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-P , --purge</strong></span>
+</span></dt><dd>
+
+        Purge packages matching the given specification, if they will no longer be used after a resolution. Use '*/*' to accept all purges, but note that by doing so you are putting a great deal of trust in package authors to get dependencies right.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--no-override-masks (--no-no-override-masks)</strong></span>
+</span></dt><dd>
+
+        If otherwise unable to make a decision, unless this option is specified the resolver will try packages that are weakly masked too.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--no-override-flags (--no-no-override-flags)</strong></span>
+</span></dt><dd>
+
+        If otherwise unable to make a decision, unless this option is specified the resolver will try selecting packages using different options to the ones specified in the user’s configuration.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--no-restarts-for</strong></span>
+</span></dt><dd>
+
+        Do not restart if the problematic package has the specified package name. May be specified multiple times. Use '*/*' to avoid all restarts.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--promote-binaries</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Select when to promote packages from binary repositories
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same (s)</strong></span>
+</span></dt><dd>
+
+        If it has the same version and exactly matching use flags
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Dependent Options</h3>
+
+<p>Dependent options. A package is dependent if it requires (or looks like it might require) a package which is being removed. By default, dependent packages are treated as errors. These options specify a different behaviour.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-u , --uninstalls-may-break</strong></span>
+</span></dt><dd>
+
+        Permit uninstalls that might break packages matching the specified specification. May be specified multiple times. Use '*/*' to allow all packages to be broken. Use 'system' to allow system packages to be uninstalled.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-r , --remove-if-dependent</strong></span>
+</span></dt><dd>
+
+        Remove dependent packages that might be broken by other changes if those packages match the specified specification. May be specified multiple times. Use '*/*' to remove all dependent packages that might be broken, recursively.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-l , --less-restrictive-remove-blockers</strong></span>
+</span></dt><dd>
+
+        Use less restrictive blockers for packages matching the supplied specification if that package is to be removed by --remove-if-dependent. May be specified multiple times. Normally removing dependents is done by a pseudo-block in the form '!cat/pkg:slot'. If matched by this option, the block will instead only block the installed dependent package, so if reinstalling or upgrading the package will make it no longer be dependent then this will be done instead.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-D , --reinstall-dependents-of</strong></span>
+</span></dt><dd>
+
+        Force any installed package that is dependent upon any installed package matching the supplied spec to be reinstalled. May be specified multiple times. May be combined with --not-usable to obtain a particular ordering. Note that a target must still be specified if this option is used, so the 'nothing' set may be helpful.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Reinstall Options</h3>
+
+<p>Control whether installed packages are kept.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-K , --keep-targets</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Select whether to keep target packages
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>auto (a)</strong></span>
+</span></dt><dd>
+
+        If the target is a set, if-same, otherwise never (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-transient (t)</strong></span>
+</span></dt><dd>
+
+        Only if the installed package is transient (e.g. from 'cave import')
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same-metadata (m)</strong></span>
+</span></dt><dd>
+
+        If it is the same as the proposed replacement (that is, if it has the same version, and no non-special use flags or choices have had their values changed), and if significant metadata has not been modified
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same (s)</strong></span>
+</span></dt><dd>
+
+        If it is the same as the proposed replacement (that is, if it has the same version, and no non-special use flags or choices have had their values changed)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same-version (v)</strong></span>
+</span></dt><dd>
+
+        If it is the same version as the proposed replacement
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-possible (p)</strong></span>
+</span></dt><dd>
+
+        If possible
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-k , --keep</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Select whether to keep installed packages that are not targets
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-transient (t)</strong></span>
+</span></dt><dd>
+
+        Only if the installed package is transient (e.g. from 'cave import') (default if --everything)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same-metadata (m)</strong></span>
+</span></dt><dd>
+
+        If it is the same as the proposed replacement (that is, if it has the same version, and no non-special use flags or choices have had their values changed), and if significant metadata has not been modified
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same (s)</strong></span>
+</span></dt><dd>
+
+        If it is the same as the proposed replacement (that is, if it has the same version, and no non-special use flags or choices have had their values changed) (default if --complete)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-same-version (v)</strong></span>
+</span></dt><dd>
+
+        If it is the same version as the proposed replacement
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-possible (p)</strong></span>
+</span></dt><dd>
+
+        If possible (default)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-R , --reinstall-scm</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Select whether to reinstall SCM packages that would otherwise be kept
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>always (a)</strong></span>
+</span></dt><dd>
+
+        Always
+
+</dd><dt><span class="term">
+<span class="strong"><strong>daily (d)</strong></span>
+</span></dt><dd>
+
+        If they were installed more than a day ago
+
+</dd><dt><span class="term">
+<span class="strong"><strong>weekly (w)</strong></span>
+</span></dt><dd>
+
+        If they were installed more than a week ago (default if --complete)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never (default)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-w , --with</strong></span>
+</span></dt><dd>
+
+        Never keep installed packages with the supplied package name. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-W , --without</strong></span>
+</span></dt><dd>
+
+        Keep installed packages with the supplied package name if possible. May be specified multiple times.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Slot Options</h3>
+
+<p>Control which slots are considered.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-S , --target-slots</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Which slots to consider for targets
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>best-or-installed (x)</strong></span>
+</span></dt><dd>
+
+        Consider the best slot, if it is not installed, or all installed slots otherwise (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>installed-or-best (i)</strong></span>
+</span></dt><dd>
+
+        Consider all installed slots, or the best installable slot if nothing is installed
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all (a)</strong></span>
+</span></dt><dd>
+
+        Consider all installed slots and the best installable slot (default if --complete or --everything)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>best (b)</strong></span>
+</span></dt><dd>
+
+        Consider the best installable slot only (default if --lazy)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-s , --slots</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Which slots to consider for packages that are not targets
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>best-or-installed (x)</strong></span>
+</span></dt><dd>
+
+        Consider the best slot, if it is not installed, or all installed slots otherwise (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>installed-or-best (i)</strong></span>
+</span></dt><dd>
+
+        Consider all installed slots, or the best installable slot if nothing is installed
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all (a)</strong></span>
+</span></dt><dd>
+
+        Consider all installed slots and the best installable slot (default if --complete or --everything)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>best (b)</strong></span>
+</span></dt><dd>
+
+        Consider the best installable slot only (default if --lazy)
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Dependency Options</h3>
+
+<p>Control which dependencies are followed.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-B , --follow-installed-build-dependencies (+B , --no-follow-installed-build-dependencies)</strong></span>
+</span></dt><dd>
+
+        Follow build dependencies for installed packages (default if --complete or --everything)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-n , --no-follow-installed-dependencies (+n , --no-no-follow-installed-dependencies)</strong></span>
+</span></dt><dd>
+
+        Ignore dependencies (except compiled-against dependencies, which are always taken) for installed packages. (default if --lazy)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-0 , --no-dependencies-from</strong></span>
+</span></dt><dd>
+
+        Ignore dependencies (not blockers) from packages matching the supplied specification. May be specified multiple times. Use '*/*' to ignore all dependencies. Use of this option can lead to horrible breakages.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-! , --no-blockers-from</strong></span>
+</span></dt><dd>
+
+        Ignore blockers from packages matching the supplied specification. May be specified multiple times. Use '*/*' to ignore all blockers. Use of this option can lead to horrible breakages.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Suggestion Options</h3>
+
+<p>Control whether suggestions are taken. Suggestions that are already installed are instead treated as hard dependencies.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--suggestions</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        How to treat suggestions and recommendations
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>ignore</strong></span>
+</span></dt><dd>
+
+        Ignore suggestions
+
+</dd><dt><span class="term">
+<span class="strong"><strong>display</strong></span>
+</span></dt><dd>
+
+        Display suggestions, but do not take them unless explicitly told to do so (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>take</strong></span>
+</span></dt><dd>
+
+        Take all suggestions
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--recommendations</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        How to treat recommendations
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>ignore</strong></span>
+</span></dt><dd>
+
+        Ignore recommendations
+
+</dd><dt><span class="term">
+<span class="strong"><strong>display</strong></span>
+</span></dt><dd>
+
+        Display recommendations, but do not take them unless explicitly told to do so
+
+</dd><dt><span class="term">
+<span class="strong"><strong>take</strong></span>
+</span></dt><dd>
+
+        Take all recommendations (default)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-t , --take</strong></span>
+</span></dt><dd>
+
+        Take any suggestion matching the supplied package specification or suggestion group name (e.g. --take 'app-vim/securemodelines' or --take 'app-vim/*' or --take send-email)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-T , --take-from</strong></span>
+</span></dt><dd>
+
+        Take all suggestions made by any package matching the supplied package specification
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-i , --ignore</strong></span>
+</span></dt><dd>
+
+        Discard any suggestion matching the supplied package specification or group name
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-I , --ignore-from</strong></span>
+</span></dt><dd>
+
+        Discard all suggestions made by any package matching the supplied package specification
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Package Selection Options</h3>
+
+<p>Control which packages are selected.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-F , --favour</strong></span>
+</span></dt><dd>
+
+        If there is a choice (e.g. || ( ) dependencies), favour the specified package names
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--favour-matching</strong></span>
+</span></dt><dd>
+
+        If there is a choice (e.g. || ( ) dependencies), favour specs which match all of the packages matching the supplied spec
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-A , --avoid</strong></span>
+</span></dt><dd>
+
+        If there is a choice (e.g. || ( ) dependencies), avoid the specified package names
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--avoid-matching</strong></span>
+</span></dt><dd>
+
+        If there is a choice (e.g. || ( ) dependencies), avoid specs which match any of the packages matching the supplied spec
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-p , --preset</strong></span>
+</span></dt><dd>
+
+        Preset a given constraint. For example, --preset =cat/pkg-2.1 will tell the resolver to use that particular version. Note that this may lead to errors, if the specified version does not satisfy other constraints. Also note that specifying a preset will not force a package to be considered if it would otherwise not be part of the resolution set.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-H , --hide</strong></span>
+</span></dt><dd>
+
+        When selecting origin ID candidates, pretend that any ID matching the specified spec does not exist. For example, --hide */*::foo can be used to avoid selecting any ID in the foo repository. May be specified multiple times.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Package Ordering Options</h3>
+
+<p>Control the order in which packages are installed</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-N , --not-usable</strong></span>
+</span></dt><dd>
+
+        Consider installed packages matching the supplied specification as being unusable when breaking dependency cycles. May be specified multiple times. Note that this option affects only ordering; it does not also force a reinstall of these packages.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-E , --early</strong></span>
+</span></dt><dd>
+
+        When given a collection of otherwise equally desirable packages to order, order packages matching the supplied spec first.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-L , --late</strong></span>
+</span></dt><dd>
+
+        When given a collection of otherwise equally desirable packages to order, order packages matching the supplied spec last.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Destination Options</h3>
+
+<p>Control to which destinations targets are installed. Dependencies will always be installed to / as necessary.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-m , --make</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify what to do with targets.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>auto (a)</strong></span>
+</span></dt><dd>
+
+        'install', or 'chroot' if the preferred root is not / (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>install (i)</strong></span>
+</span></dt><dd>
+
+        Install targets to /
+
+</dd><dt><span class="term">
+<span class="strong"><strong>binaries (b)</strong></span>
+</span></dt><dd>
+
+        Create binary packages for targets
+
+</dd><dt><span class="term">
+<span class="strong"><strong>chroot (c)</strong></span>
+</span></dt><dd>
+
+        Install targets to a chroot
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-M , --make-dependencies</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify what to do with dependencies of targets. Only useful when '--make' is not set to 'install', since dependencies on / are considered specially.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>auto</strong></span>
+</span></dt><dd>
+
+        Select appropriate behaviour based upon --make. For 'install', 'all', and for 'binaries' and 'chroot', 'runtime'. (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>runtime (r)</strong></span>
+</span></dt><dd>
+
+        Only care about runtime dependencies
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all (a)</strong></span>
+</span></dt><dd>
+
+        Care about all dependencies
+
+</dd><dt><span class="term">
+<span class="strong"><strong>none (n)</strong></span>
+</span></dt><dd>
+
+        Don’t care about dependencies at all
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-b , --via-binary</strong></span>
+</span></dt><dd>
+
+        When building a package matching the supplied spec, create a binary package and use that for the install. May be specified multiple times. If this option is not specified, a package will be built multiple times for multiple destinations
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-/ , --dependencies-to-slash</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify what to do with dependencies for the / filesystem when not working on /. By default, all dependencies are installed to /.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>all (a)</strong></span>
+</span></dt><dd>
+
+        Send all dependencies to / (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>runtime (r)</strong></span>
+</span></dt><dd>
+
+        Send only runtime dependencies to /
+
+</dd><dt><span class="term">
+<span class="strong"><strong>build (b)</strong></span>
+</span></dt><dd>
+
+        Send only build dependencies to /
+
+</dd><dt><span class="term">
+<span class="strong"><strong>none (n)</strong></span>
+</span></dt><dd>
+
+        Don’t send dependencies to / at all
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--one-binary-per-slot (--no-one-binary-per-slot)</strong></span>
+</span></dt><dd>
+
+        When building a binary package, remove other versions in the same repository and slot (as would be done for non-binary packages).
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-2 , --chroot-path</strong></span>
+</span></dt><dd>
+
+        When making a chroot, only consider destination repositories whose root is this value.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Error-ignoring Options</h3>
+
+<p>Allow certain kinds of resolution errors to be ignored. Highly dangerous; using these options will very likely result in your system becoming impressively or subtly broken. Note that errors will still be shown, but the resolution will be allowed to proceed to execution anyway.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--ignore-unable-decisions (--no-ignore-unable-decisions)</strong></span>
+</span></dt><dd>
+
+        Ignore any resolvent for which we were unable to make a decision. Specifying this will break your system.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--ignore-unorderable-jobs (--no-ignore-unorderable-jobs)</strong></span>
+</span></dt><dd>
+
+        Ignore any job we were unable to order. Specifying this will break your system.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Dump Options</h3>
+
+<p>Dump the resolver’s state to stdout after completion, or when an error occurs. For debugging purposes; produces rather a lot of noise.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--dump (--no-dump)</strong></span>
+</span></dt><dd>
+
+        Dump debug output
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--dump-restarts (--no-dump-restarts)</strong></span>
+</span></dt><dd>
+
+        Dump restarts
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>EXECUTION OPTIONS</h2>
+
+<div class="refsect2"><h3>World Options</h3>
+
+<p>Options controlling how the 'world' set is modified</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-1 , --preserve-world (+1 , --no-preserve-world)</strong></span>
+</span></dt><dd>
+
+        Do not modify the 'world' set
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Failure Options</h3>
+
+<p>Failure handling options.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-C , --continue-on-failure</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to continue after an error occurs
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-satisfied (s)</strong></span>
+</span></dt><dd>
+
+        If remaining packages' dependencies are satisfied
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-independent (i)</strong></span>
+</span></dt><dd>
+
+        If remaining packages do not depend upon any failing package
+
+</dd><dt><span class="term">
+<span class="strong"><strong>always (a)</strong></span>
+</span></dt><dd>
+
+        Always (dangerous)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--resume-file (--no-resume-file)</strong></span>
+</span></dt><dd>
+
+        Write resume information to the specified file. If a build fails, or if '--execute' is not specified, then 'cave resume' can resume execution from this file.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Jobs Options</h3>
+
+<p>Options controlling jobs and parallelism.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-f , --fetch (+f , --no-fetch)</strong></span>
+</span></dt><dd>
+
+        Skip any jobs that are not fetch jobs. Should be combined with --continue-on-failure if any of the packages to be merged have fetch dependencies.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-J , --fetch-jobs</strong></span>
+</span></dt><dd>
+
+        The number of parallel fetch jobs to launch. If set to 0, fetches will be carried out sequentially with other jobs. Values higher than 1 are currently treated as being 1. Defaults to 1, or if --fetch is specified, 0.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Phase Options</h3>
+
+<p>Options controlling which phases to execute. No sanity checking is done, allowing you to shoot as many feet off as you desire. Phase names do not have the src_, pkg_ or builtin_ prefix, so 'init', 'preinst', 'unpack', 'merge', 'strip' etc.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--skip-phase</strong></span>
+</span></dt><dd>
+
+        Skip the named phases
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--abort-at-phase</strong></span>
+</span></dt><dd>
+
+        Abort when a named phase is encountered
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--skip-until-phase</strong></span>
+</span></dt><dd>
+
+        Skip every phase until a named phase is encountered
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--change-phases-for</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Control to which package or packages these phase options apply
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        All packages (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>first</strong></span>
+</span></dt><dd>
+
+        Only the first package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!first</strong></span>
+</span></dt><dd>
+
+        Everything except the first package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>last</strong></span>
+</span></dt><dd>
+
+        Only the last package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!last</strong></span>
+</span></dt><dd>
+
+        Everything except the last package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>targets</strong></span>
+</span></dt><dd>
+
+        Only packages that are targets
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!targets</strong></span>
+</span></dt><dd>
+
+        Only packages that are not targets
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>DISPLAY OPTIONS</h2>
+
+<div class="refsect2"><h3>Display Options</h3>
+
+<p>Options relating to the resolution display.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--show-option-descriptions</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to display descriptions for package options
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>none</strong></span>
+</span></dt><dd>
+
+        Don’t show any descriptions
+
+</dd><dt><span class="term">
+<span class="strong"><strong>new</strong></span>
+</span></dt><dd>
+
+        Show for any new options
+
+</dd><dt><span class="term">
+<span class="strong"><strong>changed</strong></span>
+</span></dt><dd>
+
+        Show for new or changed options (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        Show all options
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--show-descriptions</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to display package descriptions
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>none</strong></span>
+</span></dt><dd>
+
+        Don’t show any descriptions
+
+</dd><dt><span class="term">
+<span class="strong"><strong>new</strong></span>
+</span></dt><dd>
+
+        Show for new packages (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        Show for all packages
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Explanations</h3>
+
+<p>Options requesting the resolver explain a particular decision that it made</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-X , --explain</strong></span>
+</span></dt><dd>
+
+        Explain why the resolver made a particular decision. The argument is a package dependency specification, so --explain dev-libs/boost or --explain qt:3 or even --explain '*/*' (although --dump is a better way of getting highly noisy debug output).
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>GRAPH JOBS OPTIONS</h2>
+
+<div class="refsect2"><h3>Graph Jobs Options</h3>
+
+<p>Options relating to creating graphs for jobs. If --graph-jobs-basename is specified, a Graphviz graph will be created for the jobs in the resolution.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-basename</strong></span>
+</span></dt><dd>
+
+        Specify the basename (filename without extension) to be used when creating job graphs. If unspecified, no jobs graph will be created.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-format</strong></span>
+</span></dt><dd>
+
+        Specifies the desired output format for the Graphviz graph. The argument must be a valid value for the '-T' option for Graphviz. Also determines the file extension of the generated graph. If unspecified, only a raw graph file will be created, and it will not be processed using Graphviz.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Graph Jobs Format Options</h3>
+
+<p>Options relating to the format of created graphs.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-all-arrows (--no-graph-jobs-all-arrows)</strong></span>
+</span></dt><dd>
+
+        Show all arrows. By default dependencies required only for if-independent are not shown, since for non-trivial resolutions Graphviz will otherwise require obscene amounts of memory.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-full-names (--no-graph-jobs-full-names)</strong></span>
+</span></dt><dd>
+
+        Show full names for graph jobs.
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>PROGRAM OPTIONS</h2>
+
+<div class="refsect2"><h3>Program Options</h3>
+
+<p>Options controlling which programs are used to carry out various tasks. Any replacement to the standard program must provide exactly the same interface. In all cases, $CAVE can be used to get the path of the main 'cave' executable. Note that unless an option is explicitly specified, an internal implementation of the default command might be used instead of spawning a new process.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--display-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to display the resolution. Defaults to '$CAVE display-resolution'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to graph jobs. Defaults to '$CAVE graph-jobs'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--execute-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to execute the resolution. Defaults to '$CAVE execute-resolution'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--perform-program</strong></span>
+</span></dt><dd>
+
+        The program used to perform actions. Defaults to '$CAVE perform'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--update-world-program</strong></span>
+</span></dt><dd>
+
+        The program used to perform world updates. Defaults to '$CAVE update-world'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-program</strong></span>
+</span></dt><dd>
+
+        The program used to create Graphviz graphs. Defaults to 'dot'.
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

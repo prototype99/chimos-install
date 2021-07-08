@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>print-ids</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-print-ids</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-print-ids"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-print-ids</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-print-ids
+     — Prints a list of known IDs.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave print-ids [ --matching spec ] [ --supporting action ] [ --with-mask mask-kind ]</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Prints a list of known IDs. No formatting is used, making the output suitable for parsing by scripts.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Filters</h3>
+
+<p>Filter the output. Each filter may be specified more than once.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-m , --matching</strong></span>
+</span></dt><dd>
+
+        Show only IDs matching this spec. If specified multiple times, only IDs matching every spec are selected.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-s , --supporting</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Show only IDs supporting this action. If specified multiple times, all listed actions must be supported.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>install</strong></span>
+</span></dt><dd>
+
+        able to be installed
+
+</dd><dt><span class="term">
+<span class="strong"><strong>uninstall</strong></span>
+</span></dt><dd>
+
+        able to be uninstalled
+
+</dd><dt><span class="term">
+<span class="strong"><strong>pretend</strong></span>
+</span></dt><dd>
+
+        has pretend-install-time checks
+
+</dd><dt><span class="term">
+<span class="strong"><strong>config</strong></span>
+</span></dt><dd>
+
+        supports post-install configuration
+
+</dd><dt><span class="term">
+<span class="strong"><strong>fetch</strong></span>
+</span></dt><dd>
+
+        able to have sources fetched
+
+</dd><dt><span class="term">
+<span class="strong"><strong>pretend-fetch</strong></span>
+</span></dt><dd>
+
+        able to have sources pretend-fetched
+
+</dd><dt><span class="term">
+<span class="strong"><strong>info</strong></span>
+</span></dt><dd>
+
+        provides extra pre- or post-install information
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-M , --with-mask</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Show only IDs with this kind of mask. If specified multiple times, all listed masks must be present.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>none</strong></span>
+</span></dt><dd>
+
+        no mask
+
+</dd><dt><span class="term">
+<span class="strong"><strong>any</strong></span>
+</span></dt><dd>
+
+        any kind of mask
+
+</dd><dt><span class="term">
+<span class="strong"><strong>user</strong></span>
+</span></dt><dd>
+
+        masked by user
+
+</dd><dt><span class="term">
+<span class="strong"><strong>unaccepted</strong></span>
+</span></dt><dd>
+
+        masked by unaccepted key
+
+</dd><dt><span class="term">
+<span class="strong"><strong>repository</strong></span>
+</span></dt><dd>
+
+        masked by repository
+
+</dd><dt><span class="term">
+<span class="strong"><strong>unsupported</strong></span>
+</span></dt><dd>
+
+        masked because it is unsupported
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Display Options</h3>
+
+<p>Controls the output format.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-f , --format</strong></span>
+</span></dt><dd>
+
+        Select the output format. Special tokens recognised are %c for category, %p for package, %v for version, %s for slot, %S for slot in its native format, %: for ':' if we have a slot and empty otherwise, %r for repository, %F for the canonical full form, %V for the canonical full version, %W for the canonical full unversioned form, %N for the canonical full unnamed form, %u for a uniquely identifying dependency spec, %I is equivalent to %c/%p%:%s,\n for newline, \t for tab. Default is '%F\n'.
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

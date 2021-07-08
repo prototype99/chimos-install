@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>vdb Repository Format</h1>
+
+<p>The <code>vdb</code> repository format is used on Gentoo and derived distributions to track packages installed from
+an ebuild. It is not used on Exherbo; <a href="exndbam.html">exndbam</a> serves the equivalent purpose there.</p>
+
+<p>As well as the <a href="index.html">general keys supported for all repositories</a>, the following keys have meaning
+for <code>vdb</code> format repositories:</p>
+
+<dl>
+    <dt><code>location</code></dt>
+    <dd>The location of the repository. Mandatory. On Gentoo systems, this must be <code>${root}/var/db/pkg</code> to
+    avoid problems with broken ebuilds that illegally access the VDB.</dd>
+
+    <dt><code>names_cache</code></dt>
+    <dd>The directory in which to look for a names cache, and in which to generate a names cache. A names cache will
+    significantly speed up converting a <code>pkg</code> into a <code>cat/pkg</code>. See <a
+        href="../../overview/gettingstarted.html">Getting Started</a> for notes. Optional, set to <code>/var/empty</code>
+    to disable.</dd>
+
+    <dt><code>builddir</code></dt>
+    <dd>The directory to use when 'building' a package for an uninstall (a temporary directory is needed for various
+    operations). Optional.</dd>
+
+    <dt><code>root</code></dt>
+    <dd>The root to which this VDB repository corresponds. Optional.</dd>
+
+    <dt><code>name</code></dt>
+    <dd>The repository's name. Defaults to "installed". Usually only changed if multiple VDB repositories are
+    required.</dd>
+</dl>
+
+
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

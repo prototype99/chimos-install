@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>uninstall</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-uninstall</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-uninstall"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-uninstall</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-uninstall
+     — Uninstall one or more packages.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave uninstall [ -x|--execute ] spec …</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Uninstalls one or more packages. Note that 'cave uninstall' simply rewrites the supplied dependency specifications and then uses 'cave resolve' to do the work; 'cave uninstall foo' is the same as 'cave resolve !foo'.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Target options</h3>
+
+<p>Target options</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-a , --all-versions (+a , --no-all-versions)</strong></span>
+</span></dt><dd>
+
+        If a supplied spec matches multiple versions, uninstall all versions rather than erroring
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>NOTES</h2>
+
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+
+All options available for 'cave resolve' are also permitted. See 'man cave-resolve' for details.
+
+</li></ul></div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

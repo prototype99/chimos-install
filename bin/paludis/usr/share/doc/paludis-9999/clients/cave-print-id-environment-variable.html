@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>print-id-environment-variable</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-print-id-environment-variable</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-print-id-environment-variable"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-print-id-environment-variable</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-print-id-environment-variable
+     — Prints ID environment variables.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave print-id-environment-variable --variable-name var [ --format format ] spec</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Prints ID environment variables. No formatting is used, making the output suitable for parsing by scripts.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Spec Options</h3>
+
+<p>Alter how the supplied spec is used.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-a , --all (+a , --no-all)</strong></span>
+</span></dt><dd>
+
+        If the spec matches multiple IDs, display all matches.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-b , --best (+b , --no-best)</strong></span>
+</span></dt><dd>
+
+        If the spec matches multiple IDs, select the best ID rather than giving an error.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Filters</h3>
+
+<p>Filter the output. Each filter may be specified more than once.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--variable-name</strong></span>
+</span></dt><dd>
+
+        Show this environment variable. If specified more than once, any name match is accepted.  Must be specified at least once.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Display Options</h3>
+
+<p>Controls the output format.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--format</strong></span>
+</span></dt><dd>
+
+        Select the output format. Special tokens recognised are %n for variable name, %v for value, \n for newline, \t for tab. Default is '%n=%v\n'.
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

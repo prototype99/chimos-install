@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>display-resolution</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-display-resolution</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-display-resolution"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-display-resolution</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-display-resolution
+     — Displays a dependency resolution created using 'cave resolve'.
+</p></div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Displays a dependency resolution created using 'cave resolve'. Mostly for internal use; most users will not use this command directly.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>DISPLAY OPTIONS</h2>
+
+<div class="refsect2"><h3>Display Options</h3>
+
+<p>Options relating to the resolution display.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--show-option-descriptions</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to display descriptions for package options
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>none</strong></span>
+</span></dt><dd>
+
+        Don’t show any descriptions
+
+</dd><dt><span class="term">
+<span class="strong"><strong>new</strong></span>
+</span></dt><dd>
+
+        Show for any new options
+
+</dd><dt><span class="term">
+<span class="strong"><strong>changed</strong></span>
+</span></dt><dd>
+
+        Show for new or changed options (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        Show all options
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--show-descriptions</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to display package descriptions
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>none</strong></span>
+</span></dt><dd>
+
+        Don’t show any descriptions
+
+</dd><dt><span class="term">
+<span class="strong"><strong>new</strong></span>
+</span></dt><dd>
+
+        Show for new packages (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        Show for all packages
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Explanations</h3>
+
+<p>Options requesting the resolver explain a particular decision that it made</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-X , --explain</strong></span>
+</span></dt><dd>
+
+        Explain why the resolver made a particular decision. The argument is a package dependency specification, so --explain dev-libs/boost or --explain qt:3 or even --explain '*/*' (although --dump is a better way of getting highly noisy debug output).
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>IMPORT OPTIONS</h2>
+
+<div class="refsect2"><h3>Import Options</h3>
+
+<p>Options controlling additional imported packages. These options should not be specified manually; they are for use by 'cave import'.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--unpackaged-repository-params</strong></span>
+</span></dt><dd>
+
+        Specifies the parameters used to construct an unpackaged repository, for use by 'cave import'.
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>ENVIRONMENT</h2>
+
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+PALUDIS_SERIALISED_RESOLUTION_FD
+</span></dt><dd>
+
+The file descriptor on which the serialised resolution can be found.
+
+</dd></dl></div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

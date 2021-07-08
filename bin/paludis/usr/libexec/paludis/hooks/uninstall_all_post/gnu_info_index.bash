@@ -1,0 +1,1 @@
+/usr/libexec/paludis/hooks/common/gnu_info_index.bash

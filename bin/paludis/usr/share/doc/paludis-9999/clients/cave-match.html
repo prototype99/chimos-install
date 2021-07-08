@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>match</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-match</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-match"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-match</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-match
+     — Determine whether a particular package version has certain properties
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave match spec pattern …</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Determines whether a particular package version has certain properties. Mostly for use by 'cave search'; not generally for use by end users.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>MATCH OPTIONS</h2>
+
+<div class="refsect2"><h3>Pattern Options</h3>
+
+<p>Alter how patterns are matched.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-t , --type</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify which matching algorithm to use
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>text (t)</strong></span>
+</span></dt><dd>
+
+        Match an exact text substring, ignoring case (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>exact (x)</strong></span>
+</span></dt><dd>
+
+        Match only an entire exact string, ignoring case
+
+</dd><dt><span class="term">
+<span class="strong"><strong>regex (r)</strong></span>
+</span></dt><dd>
+
+        Match using pcre regular expressions, ignoring case
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-C , --case-sensitive (+C , --no-case-sensitive)</strong></span>
+</span></dt><dd>
+
+        Make matching case sensitive.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-&amp; , --and (+&amp; , --no-and)</strong></span>
+</span></dt><dd>
+
+        If multiple patterns are specified, require that all patterns match. Default is to succeed if any pattern matches.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-! , --not (+! , --no-not)</strong></span>
+</span></dt><dd>
+
+        Invert the results of pattern matches.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Search Key Options</h3>
+
+<p>Alter the keys used for searching. If no option in this group is specified, matches are carried out on name and description. Otherwise, matches are carried out on all of the specified keys.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-k , --key</strong></span>
+</span></dt><dd>
+
+        Search the named metadata key (e.g. DESCRIPTION). May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-n , --name (+n , --no-name)</strong></span>
+</span></dt><dd>
+
+        Search package names.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-d , --description (+d , --no-description)</strong></span>
+</span></dt><dd>
+
+        Search package descriptions.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Key Handling Options</h3>
+
+<p>Alter how key values are interpreted.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-e , --enabled-only (+e , --no-enabled-only)</strong></span>
+</span></dt><dd>
+
+        Only search enabled parts of conditional dependency spec trees
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

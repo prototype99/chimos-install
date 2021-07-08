@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>Package and Set Dependency Specifications</h1>
+
+<p>Dependency specifications can look like:</p>
+
+<ul>
+    <li><code>set</code>: A simple set name. Only supported where a named set makes sense.</li>
+    <li><code>pkg</code>: A simple package name. Not supported in configuration files, and only supported where Paludis
+    can safely disambiguate this into <code>cat/pkg</code>.</li>
+    <li><code>cat/pkg</code>: A simple package name with explicit category. This may be followed by suffixes, as
+    described below.</li>
+    <li><code>=cat/pkg-1.23</code>: A simple package name with an explicit category, package and version. Operators
+    other than <code>=</code> are available, described below. This may be followed by suffixes.</li>
+</ul>
+
+<p>In some places, either or both of <code>cat</code> and <code>pkg</code> may be <code>*</code>, which matches any
+category or package. This is not permitted where it would not make sense. To match any package in any category, use
+<code>*/*</code>.</p>
+
+<h2>Suffixes</h2>
+
+<p>The <code>cat/pkg</code> and <code>=cat/pkg-1.23</code> forms may be followed by zero or more optional suffixes, in
+the following order:</p>
+
+<ul>
+    <li><code>:slot</code>: Match only in that slot.</li>
+
+    <li><code>::repo-&gt;repo</code>: Repository requirements, described below.</li>
+
+    <li><code>::something</code>: like <code>::-&gt;something</code>, for all legal values of something.</li>
+
+    <li><code>[use]</code> and <code>[-use]</code>: Match only if the named USE flag is enabled / disabled for this
+    package. May be specified multiple times with different USE flag names.</li>
+
+    <li><code>[=1.23]</code>: Match a particular version. Any operator described below
+    can be used. May be extended to ranged dependencies, using either <code>[=1.23|=1.24|=1.25]</code> for an or
+    dependency or <code>[&gt;=1.2&amp;&lt;2]</code> for an and dependency.</li>
+
+    <li><code>[.key?]</code>: Match only if the specified metadata key exists. <code>key</code> may be a key's raw
+    name (e.g. <code>DESCRIPTION</code>, <code>DEPEND</code>) or a role prefixed with a dollar sign (e.g.
+    <code>$short_description</code>, <code>$build_dependencies_target</code>). If the key's name is prefixed with
+    <code>::</code>, metadata from the repository rather than the package ID is checked. If the key is in
+    <code>(parens)</code>, matches masks by role, token or associated key (and <code>(*)</code> matches any mask).</li>
+
+    <li><code>[.key=value]</code>: Match only if the specified metadata key has a particular exact value. Only works for
+    simple values, sets and sequences, not spec trees and other complex compound keys. If <code>&lt;</code> is used in
+    place of <code>=</code>, for numeric values a less-than comparison is used, and for sets, sequences and spec trees,
+    a match occurs if any member of the set or sequence is equal to the value. Similarly if <code>&gt;</code> is used,
+    for numeric values a greater-than comparison is used; it does not match for other types of values. If <code>!=</code>
+    is used for simple values, a not-equal comparison is used. As above, the key may be a raw name or a dollar-prefixed
+    role name, and may be prefixed with <code>::</code> for checking repository metadata.</li>
+
+    <li><code>[.!exclude=spec]</code>: Exclude packages matching <code>spec</code>. The main restriction on <code>spec</code>
+    is that it may not include the <code>[]</code> brackets. Following are some of the examples of valid exclude
+    requirements: <code>[.!exclude=cat/pkg]</code> or <code>[.!exclude=virtual/*]</code> or <code>[.!exclude=*/*::repo]</code> or
+    <code>[.!exclude=>=cat/pkg-5::repo]</code> or <code>[.!exclude=>=cat/pkg-1][.!exclude=&lt;cat/pkg-2]</code>.
+</ul>
+
+<p>Repository requirements are in the form <code>to</code>, <code>from-&gt;</code> or <code>::from-&gt;to</code>. The
+<code>from</code> may only be a repository name, and matches packages <em>originally</em> from that repository (so
+<code>*/*::myrepo-&gt;</code> finds installed packages that originated in <code>myrepo</code>. Valid forms for
+<code>to</code> are as follows:</p>
+
+<ul>
+    <li><code>repo</code>: currently in this repository. Note that an installed package is no longer 'in' the repository
+    whence it came; use a from specification for that.</li>
+    <li><code>repo?</code>: could be installed to <code>repo</code>.</li>
+    <li><code>repo??</code>: could be installed to <code>repo</code>, ignoring masks.</li>
+    <li><code>/path</code>: installed at root <code>/path</code> (typically <code>/</code>).</li>
+    <li><code>/path?</code>: could be installed to some installed repository with root path <code>/path</code>.</li>
+    <li><code>/path??</code>: could be installed to some installed repository with root path <code>/path</code>,
+    ignoring masks.</li>
+</ul>
+
+<h2>Operators</h2>
+
+<p>The following operators are recognised:</p>
+
+<dl>
+    <dt><code>=</code></dt>
+    <dd>Exactly equal to.</dd>
+
+    <dt><code>&lt;=</code></dt>
+    <dd>Less than or equal to.</dd>
+
+    <dt><code>&lt;</code></dt>
+    <dd>Strictly less than.</dd>
+
+    <dt><code>&gt;=</code></dt>
+    <dd>Greater than or equal to.</dd>
+
+    <dt><code>&gt;</code></dt>
+    <dd>Strictly greater than.</dd>
+
+    <dt><code>~</code></dt>
+    <dd>Equal to, ignoring the package revision. If a package revision is specified, in addition the package must be of
+    greater than or equal to this revision.</dd>
+
+    <dt><code>=*</code></dt>
+    <dd>Starting with this version, componentwise. The asterisk comes <em>after</em> the version part (<code>=cat/pkg-1.2*</code> or
+    <code>cat/pkg[=1.2*]</code>).</dd>
+
+    <dt><code>~&gt;</code></dt>
+    <dd>Greater than or equal to the version, and strictly less than the version with its one-before-least-significant
+    digit part incremented, and its least significant digit part discarded. For example, <code>~&gt;1.2.3</code> means
+    <code>&gt;=1.2.3</code> and <code>&lt;1.3</code>.</dd>
+</dl>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

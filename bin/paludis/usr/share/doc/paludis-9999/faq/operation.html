@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>FAQ: Operation</h1>
+
+<ul>
+    <li><a href="operation.html#info">Get package information for a bug report</a></li>
+    <li><a href="operation.html#arrows">What do those fancy arrows when merging things mean?</a></li>
+    <li><a href="operation.html#updates">Profiles Updates for Package Moves and Slot Moves</a></li>
+    <li><a href="operation.html#repospecs">I can't install <code>*/*::installed</code> or
+        <code>*/*::overlay-&gt;</code></a></li>
+</ul>
+
+<h2 id="info">Get package information for a bug report</h2>
+
+<p>Use <code>cave info info</code> to get general configuration information. Paludis will <em>not</em> show any
+configuration that is 'per-package' in this output. (This is different to <code>emerge</code>, which misleadingly shows
+an arbitrary global configuration no matter what.)</p>
+
+<p>If you are submitting a bug report for a particular package, use <code>cave info <em>spec</em></code> instead.
+If it's an installed package, <em>spec</em> can usually just be the qualified package name (for example, <code>cave
+    info sys-apps/paludis</code>). If you're installing a package, you should instead specify an exact package ID
+(such as <code>cave info =sys-apps/paludis-0.26.0_alpha12::paludis-overlay</code>).</p>
+
+<h2 id="arrows">What do those fancy arrows when merging things mean?</h2>
+
+<p>They tell how each file is merged to root. They consist of three parts:</p>
+
+<ul>
+    <li>The first part talks about what happened to the entry this one is replacing (if any):
+    <dl>
+        <dt><code>&gt;</code></dt>
+        <dd>The entry didn't exist</dd>
+        <dt><code>=</code></dt>
+        <dd>The entry was reused</dd>
+        <dt><code>&lt;</code></dt>
+        <dd>The entry was unlinked</dd>
+    </dl></li>
+    <li>The second part refers to how it was merged:
+    <dl>
+        <dt><code>&gt;</code></dt>
+        <dd>This entry was copied</dd>
+        <dt><code>-</code></dt>
+        <dd>Merged using <code>rename()</code></dd>
+        <dt><code>^</code></dt>
+        <dd>Merged by using <code>rename()</code> on a parent directory</dd>
+        <dt><code>&amp;</code></dt>
+        <dd>Merged as a hardlink</dd>
+    </dl></li>
+    <li>The third part refers to permissions and modes:
+    <dl>
+        <dt><code>&gt;</code></dt>
+        <dd>Nothing done</dd>
+        <dt><code>~</code></dt>
+        <dd>Fixed ownership</dd>
+        <dt><code>*</code></dt>
+        <dd>Added set*id bits</dd>
+        <dt><code>+</code></dt>
+        <dd>Copied xattrs</dd>
+    </dl></li>
+</ul>
+
+<h2 id="updates">Profiles Updates for Package Moves and Slot Moves</h2>
+
+<p>Gentoo includes support for repositories specifying that a package has moved (e.g. <code>app-misc/foo</code> is now
+called <code>app-admin/foo</code>) or changed slot (e.g. <code>app-misc/foo:0</code> is now
+<code>app-misc/foo:2</code>). These are known as 'profiles updates'. Paludis will perform profiles updates after a
+sync.</p>
+
+<p>Sometimes it is possible for renames to cause collisions. For example, if <code>foo</code> is being renamed to
+<code>bar</code>, and you have both <code>foo</code> and <code>bar</code> installed, Paludis will be unable to perform
+the update. In this situation, you should generally manually uninstall the older of <code>foo</code> or
+<code>bar</code>.</p>
+
+<h2 id="repospecs">I can't install <code>*/*::installed</code> or <code>*/*::overlay-&gt;</code></h2>
+
+<p>You can't install (or reinstall) a package ID that is already installed. The <code>foo/bar-1.23</code> you have
+installed has absolutely nothing whatsoever to do with any other <code>foo/bar-1.23</code>, and by specifying
+<code>::installed</code> or <code>::overlay-&gt;</code> you are specifically saying "give me the installed ID".</p>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

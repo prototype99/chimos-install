@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>resume</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-resume</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-resume"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-resume</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-resume
+     — Resume a failed resolution from 'cave resolve'
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave resume --resume-file state [ --retry-failed ] [ --retry-skipped ]</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Resumes a failed resultion from 'cave resolve'. To enable resumes, use 'cave resolve --resume-file state --execute', and then if errors occur, use 'cave resume --resume-file state [ --retry-failed ] [ --retry-skipped ]' to try again.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Retry Options</h3>
+
+<p>Retry options. By default, 'cave resume' will treat packages that were already skipped or already failed as skipped or failed, respectively.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-r , --retry-failed (+r , --no-retry-failed)</strong></span>
+</span></dt><dd>
+
+        Retry any job that has already failed
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-R , --retry-skipped (+R , --no-retry-skipped)</strong></span>
+</span></dt><dd>
+
+        Retry any job that has already been skipped. Note that the job will just be skipped again unless circumstances have changed.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-s , --skip-failed (+s , --no-skip-failed)</strong></span>
+</span></dt><dd>
+
+        Skip any job that has already failed
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>EXECUTION OPTIONS</h2>
+
+<div class="refsect2"><h3>Failure Options</h3>
+
+<p>Failure handling options.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-C , --continue-on-failure</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Whether to continue after an error occurs
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Never (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-satisfied (s)</strong></span>
+</span></dt><dd>
+
+        If remaining packages' dependencies are satisfied
+
+</dd><dt><span class="term">
+<span class="strong"><strong>if-independent (i)</strong></span>
+</span></dt><dd>
+
+        If remaining packages do not depend upon any failing package
+
+</dd><dt><span class="term">
+<span class="strong"><strong>always (a)</strong></span>
+</span></dt><dd>
+
+        Always (dangerous)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>--resume-file (--no-resume-file)</strong></span>
+</span></dt><dd>
+
+        Write resume information to the specified file. If a build fails, or if '--execute' is not specified, then 'cave resume' can resume execution from this file.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Jobs Options</h3>
+
+<p>Options controlling jobs and parallelism.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-f , --fetch (+f , --no-fetch)</strong></span>
+</span></dt><dd>
+
+        Skip any jobs that are not fetch jobs. Should be combined with --continue-on-failure if any of the packages to be merged have fetch dependencies.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-J , --fetch-jobs</strong></span>
+</span></dt><dd>
+
+        The number of parallel fetch jobs to launch. If set to 0, fetches will be carried out sequentially with other jobs. Values higher than 1 are currently treated as being 1. Defaults to 1, or if --fetch is specified, 0.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Phase Options</h3>
+
+<p>Options controlling which phases to execute. No sanity checking is done, allowing you to shoot as many feet off as you desire. Phase names do not have the src_, pkg_ or builtin_ prefix, so 'init', 'preinst', 'unpack', 'merge', 'strip' etc.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--skip-phase</strong></span>
+</span></dt><dd>
+
+        Skip the named phases
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--abort-at-phase</strong></span>
+</span></dt><dd>
+
+        Abort when a named phase is encountered
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--skip-until-phase</strong></span>
+</span></dt><dd>
+
+        Skip every phase until a named phase is encountered
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--change-phases-for</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Control to which package or packages these phase options apply
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>all</strong></span>
+</span></dt><dd>
+
+        All packages (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>first</strong></span>
+</span></dt><dd>
+
+        Only the first package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!first</strong></span>
+</span></dt><dd>
+
+        Everything except the first package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>last</strong></span>
+</span></dt><dd>
+
+        Only the last package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!last</strong></span>
+</span></dt><dd>
+
+        Everything except the last package on the list
+
+</dd><dt><span class="term">
+<span class="strong"><strong>targets</strong></span>
+</span></dt><dd>
+
+        Only packages that are targets
+
+</dd><dt><span class="term">
+<span class="strong"><strong>!targets</strong></span>
+</span></dt><dd>
+
+        Only packages that are not targets
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>PROGRAM OPTIONS</h2>
+
+<div class="refsect2"><h3>Program Options</h3>
+
+<p>Options controlling which programs are used to carry out various tasks. Any replacement to the standard program must provide exactly the same interface. In all cases, $CAVE can be used to get the path of the main 'cave' executable. Note that unless an option is explicitly specified, an internal implementation of the default command might be used instead of spawning a new process.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--display-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to display the resolution. Defaults to '$CAVE display-resolution'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-jobs-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to graph jobs. Defaults to '$CAVE graph-jobs'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--execute-resolution-program</strong></span>
+</span></dt><dd>
+
+        The program used to execute the resolution. Defaults to '$CAVE execute-resolution'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--perform-program</strong></span>
+</span></dt><dd>
+
+        The program used to perform actions. Defaults to '$CAVE perform'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--update-world-program</strong></span>
+</span></dt><dd>
+
+        The program used to perform world updates. Defaults to '$CAVE update-world'.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--graph-program</strong></span>
+</span></dt><dd>
+
+        The program used to create Graphviz graphs. Defaults to 'dot'.
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

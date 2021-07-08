@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>Fetchers</h1>
+
+<h2>Overview</h2>
+
+<p>Paludis makes use of scripts called 'fetchers' to do most downloading. Fetchers can be added for additional protocols
+(for example, if you need to use a third party ebuild where upstream distributes its sources via Gopher), and built-in
+fetchers can be replaced (for example, if you want to use something other than <code>wget</code> to fetch via http).</p>
+
+<h2>Standard Fetchers</h2>
+
+<p>Paludis ships with the following fetcher protocols:</p>
+
+<ul>
+###FETCHERS###
+</ul>
+
+<h2>User Defined Fetchers</h2>
+
+<p>To write your own fetcher for protocol <code>proto</code>, create an executable script named <code>doproto</code> (the
+<code>do</code> prefix is essential). Fetchers may be located in any of the following directories:
+
+<ul>
+    <li><code><em>confdir</em>/fetchers/</code>, where
+    <code><em>confdir</em></code> is the directory in which <code>use.conf</code>
+    et al. reside.</li>
+
+    <li><code><em>DATADIR</em>/paludis/fetchers/</code>. On most
+    systems, <code><em>DATADIR</em></code> is <code>/usr/share</code>.</li>
+
+    <li><code><em>LIBEXECDIR</em>/paludis/fetchers/</code>. On most
+    systems, <code><em>LIBEXECDIR</em></code> is <code>/usr/libexec</code>.</li>
+</ul>
+
+<p>Paludis places its own fetchers in
+<code><em>LIBEXECDIR</em>/fetchers/<em>doproto</em></code>. This directory is
+not for end user use.</p>
+
+<p>A fetcher is called with two parameters, the source URI and the destination filename. It indicates success or failure
+via its exit status.</p>
+
+<p>For examples, consult the built-in fetchers, which can be found in <code>LIBEXECDIR/paludis/fetchers/</code>.</p>
+
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

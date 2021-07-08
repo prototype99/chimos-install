@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>perform</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-perform</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-perform"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-perform</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-perform
+     — Perform an action upon a package.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave perform config spec</strong></span></p>
+<p><span class="strong"><strong>cave perform fetch | pretend-fetch [ --exclude-unmirrorable ] [ --fetch-unneeded ] [ --ignore-unfetched ] spec</strong></span></p>
+<p><span class="strong"><strong>cave perform info spec</strong></span></p>
+<p><span class="strong"><strong>cave perform install --destination repo [ --replacing spec … ] spec</strong></span></p>
+<p><span class="strong"><strong>cave perform pretend --destination repo [ --replacing spec … ] spec</strong></span></p>
+<p><span class="strong"><strong>cave perform pretend-fetch spec</strong></span></p>
+<p><span class="strong"><strong>cave perform uninstall [ --config-protect values ] spec</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Perform an action upon a package. Not suitable for direct use, although it may be useful in some more complex scripts.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>General Options</h3>
+
+<p>General options for all actions</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--if-supported (--no-if-supported)</strong></span>
+</span></dt><dd>
+
+        If the action is not supported, exit silently with success rather than erroring.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--hooks (--no-hooks)</strong></span>
+</span></dt><dd>
+
+        Also execute the appropriate hooks for the action.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--x-of-y</strong></span>
+</span></dt><dd>
+
+        Specify the value of the X_OF_Y variable that is passed to hooks.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--no-terminal-titles</strong></span>
+</span></dt><dd>
+
+        Do not change terminal titles
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--managed-output</strong></span>
+</span></dt><dd>
+
+        Specify that our output is being managed by another process. Used by 'cave execute-resolution'; not for end user use.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--output-exclusivity</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify the exclusivity of our output. Should not be changed unless --managed-output is also specified
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>exclusive</strong></span>
+</span></dt><dd>
+
+        Exclusive output (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>with-others</strong></span>
+</span></dt><dd>
+
+        With others
+
+</dd><dt><span class="term">
+<span class="strong"><strong>background</strong></span>
+</span></dt><dd>
+
+        Backgrounded
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Fetch Action Options</h3>
+
+<p>Options for if the action is 'fetch' or 'pretend-fetch'</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--exclude-unmirrorable (--no-exclude-unmirrorable)</strong></span>
+</span></dt><dd>
+
+        Do not include unmirrorable components
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--fetch-unneeded (--no-fetch-unneeded)</strong></span>
+</span></dt><dd>
+
+        Also fetch components that aren’t needed (e.g. because they are conditional upon disabled options
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--ignore-unfetched (--no-ignore-unfetched)</strong></span>
+</span></dt><dd>
+
+        Do not fetch any component that has not already been downloaded (but do verify components that have already been downloaded
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--ignore-manual-fetch-errors (--no-ignore-manual-fetch-errors)</strong></span>
+</span></dt><dd>
+
+        Ignore any errors that say that manual fetching is required for a component
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--regulars-only (--no-regulars-only)</strong></span>
+</span></dt><dd>
+
+        Only fetch regular components. If this option is not specified, the job cannot safely be backgrounded or run in parallel with installs
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Install Action Options</h3>
+
+<p>Options for if the action is 'install' or (for --destination and --replacing) 'pretend'</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--destination</strong></span>
+</span></dt><dd>
+
+        The name of the repository to which the install should take place
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--replacing</strong></span>
+</span></dt><dd>
+
+        A spec that uniquely identifies an ID to be replaced as part of the install. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--skip-phase</strong></span>
+</span></dt><dd>
+
+        Skip the named phases
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--abort-at-phase</strong></span>
+</span></dt><dd>
+
+        Abort when a named phase is encounted
+
+</dd><dt><span class="term">
+<span class="strong"><strong>--skip-until-phase</strong></span>
+</span></dt><dd>
+
+        Skip every phase until a named phase is encounted
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Uninstall Action Options</h3>
+
+<p>Options for if the action is 'uninstall'</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--config-protect</strong></span>
+</span></dt><dd>
+
+        Specify additional items to include in the config protection list
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>IMPORT OPTIONS</h2>
+
+<div class="refsect2"><h3>Import Options</h3>
+
+<p>Options controlling additional imported packages. These options should not be specified manually; they are for use by 'cave import'.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>--unpackaged-repository-params</strong></span>
+</span></dt><dd>
+
+        Specifies the parameters used to construct an unpackaged repository, for use by 'cave import'.
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

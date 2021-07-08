@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>unavailable Repository Format</h1>
+
+<p>The <code>unavailable</code> repository format can be used to see basic information about packages that are available
+in other repositories that have not been configured on this system. On Gentoo, this is used for seeing repositories
+known to <code>layman</code> and <code>playman.rb</code>. On Exherbo, this is used for seeing all official and
+selected unofficial repositories.</p>
+
+<p>As well as the <a href="index.html">general keys supported for all repositories</a>, the following keys have meaning
+for <code>unavailable</code> format repositories:</p>
+
+<dl>
+    <dt><code>location</code></dt>
+    <dd>The location of the repository. Mandatory.</dd>
+
+    <dt><code>name</code></dt>
+    <dd>The name of the repository. Defaults to <code>unavailable</code>.</dd>
+
+    <dt><code>sync</code></dt>
+    <dd>How to sync the repository. See <a href="../syncers.html">Syncers</a> for supported formats. Optional if the
+    repository does not need to be synced. Different sync URIs to use when a different source is requested may be
+    specified, e.g. <code>sync = git+http://host/path local: git+file:///path</code>.</dd>
+
+    <dt><code>sync_options</code></dt>
+    <dd>Any options to be passed to the syncer. Optional. Options for alternative sources are specified using the same format as
+    for <code>sync</code>.</dd>
+</dl>
+
+<p>When used in conjunction with <a href="repository.html">repository format repositories</a>, the
+<code>unavailable</code> repository format also allows automatic installation of configuration files for new repository
+files.</p>
+
+<h2>Reference Configurations</h2>
+
+<h3>Gentoo</h3>
+
+<p>The following makes <code>layman</code> repositories available:</p>
+
+<pre>
+format = unavailable
+name = layman
+location = /var/db/paludis/repositories/layman
+sync = tar+http://git.exherbo.org/layman_repositories.tar.bz2
+importance = -100
+</pre>
+
+<h3>Exherbo</h3>
+
+<p>The following lists all official repositories:</p>
+
+<pre>
+format = unavailable
+location = /var/db/paludis/repositories/unavailable
+sync = tar+http://git.exherbo.org/exherbo_repositories.tar.bz2
+importance = -100
+</pre>
+
+<p>The following lists selected unofficial repositories:</p>
+
+<pre>
+format = unavailable
+name = unavailable-unofficial
+location = /var/db/paludis/repositories/unavailable-unofficial
+sync = tar+http://git.exherbo.org/exherbo_unofficial_repositories.tar.bz2
+importance = -100
+</pre>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

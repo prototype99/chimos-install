@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>use.conf / options.conf</h1>
+
+###PALUDISENVIRONMENTONLY###
+
+<p>On Gentoo and derived distributions, the <code>use.conf</code> file controls which use flags are and are not enabled.
+It is a standard configuration file which may be a bash file (<code>use.bash</code>) and which may use the
+<code>use.conf.d/</code> directory.</p>
+
+<p>On Exherbo, the <code>options.conf</code> file controls which options are and are not enabled.  It is a standard
+configuration file which may be a bash file (<code>options.bash</code>) and which may use the
+<code>options.conf.d/</code> directory.</p>
+
+<p>Each line in the file consists of a specification followed by one or more use or option flags and labels. A
+specification may be any of:</p>
+
+<ul>
+    <li>The special specification <code>*/*</code>, which matches all packages. Nearly all users will have at least one
+    line using this specification.</li>
+    <li>A simple <code>category/package</code> name.</li>
+    <li>A simple <code>set</code> name.</li>
+    <li>A complex dependency specification.</li>
+</ul>
+
+<p>Any token may be quoted using either single or double quotes.</p>
+
+<p>A use flag or label can be:</p>
+
+<ul>
+    <li><code>flag</code>, which enables that flag.</li>
+    <li><code>flag=value</code>, which enables that flag and sets its parameter value. Most flags do not
+    use parameters, and so any parameter value specified is ignored. See the <code>BUILD_OPTIONS: jobs</code>
+    and <code>BUILD_OPTIONS: symbols</code> flags below for an example of ones that do.</li>
+    <li><code>-flag</code>, which disables that flag.</li>
+    <li><code>label:</code>, which marks any subsequent flags on that line as applying to a particular use expand
+    (Gentoo) or suboption (Exherbo) label. Common examples of use expand labels are <code>VIDEO_CARDS</code>,
+    <code>LINGUAS</code> and <code>INPUT_DEVICES</code>, as well as the special <code>BUILD_OPTIONS</code> label
+    described below. Labels are <em>not</em> case sensitive.</li>
+    <li><code>-*</code>, which disables all flags for the current label, or all flags that are not a label if there is
+    no current label.</li>
+</ul>
+
+<p>Flag settings are cumulative. This applies to expanded flags too, so if you do not wish to inherit, say,
+default <code>VIDEO_CARDS</code> from your profile, you will need to use <code>*/* VIDEO_CARDS: -* radeon</code>.</p>
+
+<h2>Special Flags</h2>
+
+<p>Paludis automatically adds special flags controlling how packages are built. These flags are all in the
+<code>BUILD_OPTIONS</code> group. Packages may have any of the following special flags:</p>
+
+<dl>
+    <dt>recommended_tests</dt>
+    <dd>If set, Paludis will run any 'recommended' tests provided by a package.</dd>
+
+    <dt>optional_tests</dt>
+    <dd>If set, Paludis will run any 'optional' tests provided by a package.</dd>
+
+    <dt>expensive_tests</dt>
+    <dd>If set, Paludis will run any 'expensive' tests provided by a package. This option should generally
+    only be set by package maintainers, since tests marked as expensive are probably too painful in terms
+    of CPU time or disk space requirements to run on user systems.</dd>
+
+    <dt>trace</dt>
+    <dd>If set, Paludis will ask bash to display extremely verbose information about what an ebuild or exheres is doing
+    (using <code>set -x</code>). Not generally a good idea, but can be handy to track down why an ebuild is
+    misbehaving.</dd>
+
+    <dt>work</dt>
+    <dd>Controls whether Paludis deletes temporary working directories used during the build. If set to
+    <code>preserve</code>, the working directory is always kept (and a non-destructive merge is performed). If set to
+    <code>tidyup</code>, the working directory is removed after a successful build. If set to <code>remove</code>,
+    the working directory is always removed, even after a failed build.</dd>
+
+    <dt>jobs</dt>
+    <dd>If set to an unsigned integer, specifies the number of jobs to run in parallel when build systems
+    support this (e.g. <code>BUILD_OPTIONS: jobs=4</code> would imply <code>make -j4</code>).</dd>
+
+    <dt>symbols</dt>
+    <dd>Controls how debug symbols in executables and libraries are handled. If unset or set to <code>preserve</code>,
+    no stripping is done. If set to <code>strip</code>, debug symbols are stripped. If set to <code>split</code>, debug
+    symbols are split out into files in <code>/usr/lib/debug/</code>. If set to <code>compress</code>, symbols are also
+    split out, and debug sections are compressed. Note that <code>compress</code> will only work with <code>binutils
+        &gt;=2.21.51.0.4</code>, and may cause problems with older versions of <code>gdb</code>.</dd>
+
+    <dt>dwarf_compress</dt>
+    <dd>Compress the DWARF sections in executables and libraries.  If set, duplicated DIEs are combined into a global
+    DIE section and DW_TAG_partial_unit is used to reference the moved DIEs.  Certain DW_FORM_refs may be rewritten if
+    they result in a more compact representation.  This option <b>requires</b> the <code>dwz</code> tool to be present
+    and in the default <code>PATH</code>.</dd>
+</dl>
+
+<p>Note that these special flags are <em>not</em> use flags from an ebuild perspective. They are used only by Paludis
+internals, and are not exported to ebuilds.</p>
+
+<h2>Example</h2>
+
+<pre>
+# Accept some basic defaults for all packages, inheriting defaults from profiles
+*/* -doc -nls -apache2 bash-completion -gnome -kde mpd flac aac cdparanoia \
+  mmx mmxext rtc sse -arts -qt3 -cups real dvd threads dvdnav mp3 quicktime \
+  pnm real vidix a52 3dnow 3dnowext amr bidi bl cddb dts srt unicode xvmc
+
+# And set some USE_EXPAND defaults for all packages, explicitly overriding defaults
+# from profiles
+*/* LINGUAS:           -* en_GB en
+*/* VIDEO_CARDS:       -* nv nvidia
+*/* ALSA_CARDS:        -* emu10k1
+
+# Some per package settings
+app-editors/vim        -perl -python
+app-crypt/gnupg        -X
+media-sound/lame       -gtk
+
+# And some wildcarding
+dev-cpp/*              doc
+
+# We like tests, and don't want debug symbols
+*/*                    BUILD_OPTIONS: optional_tests symbols=strip
+
+# But we do want split debug symbols for a few packages
+dev-cpp/*              BUILD_OPTIONS: symbols=split
+
+# We want to run four jobs in parallel if possible (Exheres format packages
+# only; Gentoo EAPIs use the MAKEOPTS environment variable instead)
+*/*                    BUILD_OPTIONS: jobs=4
+</pre>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

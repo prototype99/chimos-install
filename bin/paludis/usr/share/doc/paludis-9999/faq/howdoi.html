@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>FAQ: How do I ...?</h1>
+
+<ul>
+    <li><a href="howdoi.html#ccache">Use <code>ccache</code></a></li>
+    <li><a href="howdoi.html#unmask">Unmask a Package</a></li>
+    <li><a href="howdoi.html#syncfromcvs">Sync from CVS</a></li>
+    <li><a href="howdoi.html#syncfromsnapshot">Sync from a Gentoo tree snapshot</a></li>
+    <li><a href="howdoi.html#deletedvdb">Recover VDB</a></li>
+    <li><a href="howdoi.html#removeportage">Remove Portage from my Gentoo installation</a></li>
+    <li><a href="howdoi.html#etcupdate">Update Configuration Files (<code>etc-update</code>)</a></li>
+    <li><a href="howdoi.html#sync">Sync while doing anything else</a></li>
+</ul>
+
+<h2 id="ccache">Use <code>ccache</code></h2>
+
+<p>To enable <code>ccache</code>, simply set the relevant variables in your
+configuration <code>bashrc</code>:</p>
+
+<pre>
+PATH="/usr/lib/ccache/bin/:${PATH}"
+CCACHE_DIR="/var/tmp/ccache"
+SANDBOX_WRITE="${SANDBOX_WRITE}:${CCACHE_DIR}"
+</pre>
+
+<p>You'll need to make sure that your ccache directory has appropriate permissions. Paludis
+will sometimes use the <code>paludisbuild</code> user when compiling.
+You can set the maxium size of the cache by running (for example)
+<code>CCACHE_DIR="/var/tmp/ccache" ccache -M 2G</code> once as root.</p>
+
+<h2 id="unmask">Unmask a Package</h2>
+
+<p>First, you need to determine how a package is masked. The easiest way to do
+this is to use <code>cave show</code>. Then, if you're sure you really
+want to unmask a package, and bearing in mind that doing so might break your
+system, you need to override the mask. How to do this depends upon the mask
+reasons:</p>
+
+<dl>
+    <dt>keyword</dt>
+
+    <dd>You need to add an entry to your <code>keywords.conf</code> accepting
+    one of the ebuild's keywords. The special <code>-*</code> keyword cannot be
+    accepted this way; if an ebuild only has this in its keywords, report it
+    to <a href="https://bugs.gentoo.org/show_bug.cgi?id=160519">Gentoo bug
+        160519</a> and work around it by using <code>*</code>. An asterisk will
+    also accept an ebuild with empty keywords.</dd>
+
+    <dt>user mask</dt>
+
+    <dd>Either remove your <code>package_mask.conf</code> entry or override it
+    with <code>package_unmask.conf</code>.</dd>
+
+    <dt>profile mask</dt>
+
+    <dd>Override with <code>package_unmask.conf</code>.</dd>
+
+    <dt>repository mask</dt>
+
+    <dd>Override with <code>package_unmask.conf</code>.</dd>
+
+    <dt>eapi</dt>
+
+    <dd>You cannot override this mask. It indicates either a broken ebuild (if
+    <code>EAPI=unknown</code>) or an ebuild not supported by your current version
+    of Paludis.</dd>
+
+    <dt>license</dt>
+
+    <dd>Accept the appropriate licences in <code>licenses.conf</code>.</dd>
+</dl>
+
+<h2 id="syncfromcvs">Sync from CVS</h2>
+
+<p>Syncing from CVS requires use of either the <code>cvs+pserver</code> or the <code>cvs+ssh</code> protocol.
+The syntax for the configuration file line is
+<code>sync = cvs+ssh://username@host:/path/to/cvsroot:modulename</code>. As an example,
+for syncing with the <code>gentoo</code> repository via CVS, you would use
+<code>sync = cvs+ssh://username@cvs.gentoo.org:/var/cvsroot:gentoo-x86</code>.</p>
+
+<h2 id="syncfromsnapshot">Sync from a Gentoo tree snapshot</h2>
+
+<p>Syncing from a tarball requires the <code>tar+http</code>
+or <code>tar+ftp</code> protocol.  You must also
+specify <code>sync_options = --strip-components=1</code>, as the
+Gentoo snapshots place everything under a subdirectory
+named <code>portage</code>.  For example:</p>
+<pre>
+# Replace this with your favourite Gentoo mirror
+sync = tar+ftp://my.favourite.mirror/gentoo/snapshots/portage-latest.tar.bz2
+sync_options = --strip-components=1
+</pre>
+
+<h2 id="deletedvdb">Recover VDB</h2>
+
+<p>If you deleted <code>/var/db/pkg</code> by accident, you're pretty much screwed. So don't do that, and be more
+careful next time.</p>
+
+<p>If you deleted <code>/var/db/pkg</code> on purpose, please install OS X and stop pestering us.</p>
+
+<h2 id="removeportage">Remove Portage from my Gentoo installation</h2>
+
+<p>The short answer is that you can't.</p>
+
+<p>Several Gentoo packages wrongly depend on Portage, several depend on Portage because they use it
+and there really is no reason to try. Just leave Portage installed.</p>
+
+<h2 id="etcupdate">Update Configuration Files (<code>etc-update</code>)</h2>
+
+<p>Paludis doesn't provide its own version of <code>etc-update</code>. You can just keep using <code>etc-update</code>
+or <code>dispatch-conf</code>, since you <a href="howdoi.html#removeportage">can't remove Portage</a>. Or, you can use
+one of the workalikes that are available in the tree, such as <code>app-portage/conf-update</code>, or
+<code>app-portage/cfg-update</code>.</p>
+
+<h2 id="sync">Sync while doing anything else</h2>
+
+<p>If you think this'll work, buy a mac.</p>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

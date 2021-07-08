@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib64
+includedir=/usr/include/paludis-3.0
+
+Name: Paludis
+Description: The Other Package Mangler
+Version: 3.0
+Libs: -L${libdir} -lpaludis_3.0 -lpaludisutil_3.0 -lpaludisargs_3.0 -pthread
+Cflags: -I${includedir} 
+

@@ -1,5 +1,5 @@
 #notice
-ChimOS is currently only designed for uefi systems with a btrfs root and partition labels. feel free to request more unusual configurations obviously. some efforts have been made to add some flexibility via the var folder. It is recommended that you keep a backup OS.
+ChimOS is currently only designed for uefi systems with a btrfs root and partition labels. feel free to request more unusual configurations obviously. some efforts have been made to add some flexibility via the var folder. It is recommended that you keep a backup OS. some software will be badly installed during the installation process, if you can find some kind of binary that would be cool, i just copied files; it is symlinked so installation should replace the files easily
 #extra tools
 ##chroot.sh
 use this to restore the chroot. in other words, how you access the OS without booting into it.

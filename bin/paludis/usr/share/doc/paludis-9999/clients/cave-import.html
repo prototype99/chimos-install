@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>import</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-import</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-import"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-import</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-import
+     — Import a package from a directory containing its image.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave import [ --location blah ] cat/pkg [ version ] [ slot ] [ --execute ] [ -- options for 'cave resolve' ]</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Import a package from a directory containing its image. A named directory is treated as holding the contents to install, and a dummy package name is provided on the command line. Safe merge, unmerge, upgrade and replace support is provided, as is content tracking for installed files.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Execution Options</h3>
+
+<p>Control execution.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-x , --execute (+x , --no-execute)</strong></span>
+</span></dt><dd>
+
+        Execute the suggested actions
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Contents Options</h3>
+
+<p>Options controlling the content to install</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-l , --location</strong></span>
+</span></dt><dd>
+
+        Specify the directory containing the image to install (default: current directory)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-u , --install-under</strong></span>
+</span></dt><dd>
+
+        Install under the specified directory, rather than /
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-r , --rewrite-ids-over-to-root</strong></span>
+</span></dt><dd>
+
+        Change any UID or GID over this value to 0 (-1 disables, default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-s , --strip</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify whether to strip and split objects being installed.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>config (c)</strong></span>
+</span></dt><dd>
+
+        Use build_options: symbols from user configuration (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>always (a)</strong></span>
+</span></dt><dd>
+
+        Split and strip, regardless of user configuration
+
+</dd><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Do not split or strip, regardless of user configuration
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-p , --preserve-work</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify whether to avoid carrying out destructive merge actions (e.g. using rename() rather than copying)
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>config (c)</strong></span>
+</span></dt><dd>
+
+        Use build_options: preserve_work from user configuration (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>always (a)</strong></span>
+</span></dt><dd>
+
+        Do not merge destructively, regardless of user configuration
+
+</dd><dt><span class="term">
+<span class="strong"><strong>never (n)</strong></span>
+</span></dt><dd>
+
+        Allow desructive merges, regardless of user configuration
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Metadata Options</h3>
+
+<p>Options specifying metadata for the package being installed</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-D , --description</strong></span>
+</span></dt><dd>
+
+        Specify a description for the package
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-B , --build-dependency-target</strong></span>
+</span></dt><dd>
+
+        Specify a target-system build dependency. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-b , --build-dependency-host</strong></span>
+</span></dt><dd>
+
+        Specify a host-system build dependency. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-R , --run-dependency</strong></span>
+</span></dt><dd>
+
+        Specify a run dependency. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-P , --preserve-metadata (+P , --no-preserve-metadata)</strong></span>
+</span></dt><dd>
+
+        If replacing a package previously installed using this command, copy its description and dependencies
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>NOTES</h2>
+
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+
+This command uses the same underlying logic as 'cave resolve'. Any option that is valid for 'cave resolve' may be passed as a parameter following a '--'. For example, 'cave import cat/pkg --build-dependency some/dep -- --lazy' may be useful. As a special case, '--execute' does not require a '--'.
+
+</li></ul></div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

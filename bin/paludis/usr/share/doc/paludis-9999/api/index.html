@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>API</h1>
+
+<ul>
+    <li>There are <a href="#examples">examples of how to use the API and bindings</a>.</li>
+    <li>The core library code is written in <a href="cplusplus/index.html">C++</a>.</li>
+    <li>
+        <p>Bindings are available for:</p>
+        <ul>
+            <li><a href="ruby/index.html">Ruby</a></li>
+            <li><a href="python/index.html">Python</a></li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="compiling">Compiling C++ Code</h2>
+
+<p>You will need to specify various compiler flags when compiling C++ code. The usual way to do this is via
+<code>pkg-config</code>:</p>
+
+<pre>
+$ g++ -c `pkg-config --cflags paludis` -o example_command_line.o example_command_line.cc
+$ g++ -c `pkg-config --cflags paludis` -o example_action.o example_action.cc
+$ g++ `pkg-config --libs paludis` -o example_action example_command_line.o example_action.o
+</pre>
+
+<p>If you are using autotools, consider using <code>PKG_CHECK_MODULES</code> rather than calling <code>pkg-config</code>
+by hand.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>There are examples showing how to use various classes. Many examples are available in more than one language, showing
+how concepts map on to different language bindings.</p>
+
+<table summary="Examples, in different languages">
+    <tr>
+        <th>Example</th>
+        <th colspan="3">Language</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>example_command_line</td>
+        <td>C++:
+            <a href="cplusplus/example__command__line_8hh_source.html">hh</a>
+            <a href="cplusplus/example__command__line_8cc.html">cc</a>
+        </td>
+        <td><a href="ruby/example_command_line.html">Ruby</a></td>
+        <td><a href="python/example_command_line.html">Python</a></td>
+        <td>Common command line code (not a standalone example)</td>
+    </tr>
+    <tr>
+        <td>example_about</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_about.html">Ruby</a></td>
+        <td><a href="python/example_about.html">Python</a></td>
+        <td>How to use Paludis version macros</td>
+    </tr>
+    <tr>
+        <td>example_action</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_action.html">Ruby</a></td>
+        <td></td>
+        <td>How to use actions</td>
+    </tr>
+    <tr>
+        <td>example_contents</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_contents.html">Ruby</a></td>
+        <td></td>
+        <td>How to use contents</td>
+    </tr>
+    <tr>
+        <td>example_dep_label</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td></td>
+        <td></td>
+        <td>How to handle dependency labels</td>
+    </tr>
+    <tr>
+        <td>example_dep_spec</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_dep_spec.html">Ruby</a></td>
+        <td></td>
+        <td>How to handle dependency specs</td>
+    </tr>
+    <tr>
+        <td>example_dep_spec_flattener</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td></td>
+        <td></td>
+        <td>How to use DepSpecFlattener</td>
+    </tr>
+    <tr>
+        <td>example_dep_tree</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_dep_tree.html">Ruby</a></td>
+        <td></td>
+        <td>How to handle dependency specs</td>
+    </tr>
+    <tr>
+        <td>example_environment</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_environment.html">Ruby</a></td>
+        <td></td>
+        <td>How to use EnvironmentFactory and the resultant Environment</td>
+    </tr>
+    <tr>
+        <td>example_mask</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_mask.html">Ruby</a></td>
+        <td></td>
+        <td>How to use Mask</td>
+    </tr>
+    <tr>
+        <td>example_match_package</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_match_package.html">Ruby</a></td>
+        <td></td>
+        <td>How to use paludis::match_package and paludis::match_package_in_set</td>
+    </tr>
+    <tr>
+        <td>example_metadata_key</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td></td>
+        <td></td>
+        <td>How to use MetadataKey</td>
+    </tr>
+    <tr>
+        <td>example_name</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td></td>
+        <td></td>
+        <td>How to use name classes</td>
+    </tr>
+    <tr>
+        <td>example_package_id</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_package_id.html">Ruby</a></td>
+        <td></td>
+        <td>How to use PackageID</td>
+    </tr>
+    <tr>
+        <td>example_repository</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_repository.html">Ruby</a></td>
+        <td></td>
+        <td>How to use Repository</td>
+    </tr>
+    <tr>
+        <td>example_selection</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_selection.html">Ruby</a></td>
+        <td></td>
+        <td>How to use the standard Selection, Generator and Filter classes</td>
+    </tr>
+    <tr>
+        <td>example_version_operator</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_version_operator.html">Ruby</a></td>
+        <td></td>
+        <td>How to use VersionOperator</td>
+    </tr>
+    <tr>
+        <td>example_version_spec</td>
+        <td><a href="cplusplus/examples.html">C++</a></td>
+        <td><a href="ruby/example_version_spec.html">Ruby</a></td>
+        <td><a href="python/example_version_spec.html">Python</a></td>
+        <td>How to use VersionSpec</td>
+    </tr>
+</table>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

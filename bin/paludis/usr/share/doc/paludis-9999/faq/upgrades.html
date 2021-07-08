@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>FAQ: Upgrades, Old Bugs and Migration</h1>
+
+<ul>
+    <li><a href="upgrades.html#world-0.26.0_alpha13">World changes in 0.26.0_alpha13</a></li>
+</ul>
+
+<h2 id="world-0.26.0_alpha13">World changes in 0.26.0_alpha13</h2>
+
+<p>Before 0.26.0_alpha13, every installed package repository had its own individual <code>world</code>
+set handling code. Now instead there is a single global <code>world</code> file maintained by the
+environment.</p>
+
+<p>If you are using the Portage configuration format, <code>/var/lib/portage/world</code> will continue
+to be used, and there is no need to change anything.</p>
+
+<p>If you are using the Paludis configuration format, you must specify the <code>world</code> key
+in <a href="../configuration/general.html">general.conf</a>. If this key is not specified,
+no file will be written to for world updates.</p>
+
+<p>To ease the upgrade, any <code>world</code> key explicitly specified for a VDB repository will
+continue to be used for reading but not writing.</p>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

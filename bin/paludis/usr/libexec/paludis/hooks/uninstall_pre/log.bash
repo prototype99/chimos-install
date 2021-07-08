@@ -1,0 +1,1 @@
+/usr/libexec/paludis/hooks/common/log.bash

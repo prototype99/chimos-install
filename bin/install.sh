@@ -15,8 +15,12 @@ sudo mount --rbind /dev dev
 sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
 sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
+#install layman
+#install paludis
+#install our overlay
 mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
 sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
+#enter the chroot
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l

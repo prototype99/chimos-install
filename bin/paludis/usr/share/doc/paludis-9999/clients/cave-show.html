@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>show</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-show</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-show"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-show</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-show
+     — Display a summary of a given object.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave show spec …</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Displays a formatted summary of a given object. If the object is a set, the set’s contents are listed. If the object is a repository name, information about the repository is displayed. If the object is a package dep spec with wildcards, possible expansions are shown. If the object is a package dep spec without wildcards, information about matching IDs are shown.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Object Options</h3>
+
+<p>Alter how objects are interpreted.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-t , --type</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify the type of the specified objects.
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>auto (a)</strong></span>
+</span></dt><dd>
+
+        Automatically determine the type (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>repository (r)</strong></span>
+</span></dt><dd>
+
+        Treat the objects as repository names
+
+</dd><dt><span class="term">
+<span class="strong"><strong>set (s)</strong></span>
+</span></dt><dd>
+
+        Treat the objects as set names
+
+</dd><dt><span class="term">
+<span class="strong"><strong>wildcard (w)</strong></span>
+</span></dt><dd>
+
+        Treat the objects as a wildcarded package spec
+
+</dd><dt><span class="term">
+<span class="strong"><strong>package (p)</strong></span>
+</span></dt><dd>
+
+        Treat the objects as an unwildcarded package spec, showing all matches for wildcards
+
+</dd></dl></div>
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Key Options</h3>
+
+<p>Control which keys are shown.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-n , --no-keys (+n , --no-no-keys)</strong></span>
+</span></dt><dd>
+
+        Do not show any metadata keys
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-c , --complex-keys (+c , --no-complex-keys)</strong></span>
+</span></dt><dd>
+
+        Show complex keys (e.g. dependencies, downloads)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-i , --internal-keys (+i , --no-internal-keys)</strong></span>
+</span></dt><dd>
+
+        Show keys marked as 'internal-only'
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-s , --significant-keys-only (+s , --no-significant-keys-only)</strong></span>
+</span></dt><dd>
+
+        Show only keys marked as 'significant'
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-k , --key</strong></span>
+</span></dt><dd>
+
+        Show keys with the given name, regardless of other options. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-d , --description-keys (+d , --no-description-keys)</strong></span>
+</span></dt><dd>
+
+        Show description keys, regardless of other options.
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Display Options</h3>
+
+<p>Controls the output format.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-f , --flat (+f , --no-flat)</strong></span>
+</span></dt><dd>
+
+        Do not spread key values over multiple lines
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-r , --raw-names (+r , --no-raw-names)</strong></span>
+</span></dt><dd>
+
+        Display raw rather than human readable key names
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Version Options</h3>
+
+<p>Controls for which versions detailed information is shown when displaying packages. By default all installed versions and the best installable version are shown.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-1 , --one-version (+1 , --no-one-version)</strong></span>
+</span></dt><dd>
+
+        Display only a single version of any package.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-a , --all-versions (+a , --no-all-versions)</strong></span>
+</span></dt><dd>
+
+        Display all versions of packages.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-0 , --no-versions (+0 , --no-no-versions)</strong></span>
+</span></dt><dd>
+
+        Don’t display any version-specific information
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-R , --repository-at-a-time (+R , --no-repository-at-a-time)</strong></span>
+</span></dt><dd>
+
+        Group versions by repository, and then show details for each individual repository
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

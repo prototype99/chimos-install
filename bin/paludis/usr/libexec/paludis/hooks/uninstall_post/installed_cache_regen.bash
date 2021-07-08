@@ -1,0 +1,1 @@
+/usr/libexec/paludis/hooks/common/installed_cache_regen.bash

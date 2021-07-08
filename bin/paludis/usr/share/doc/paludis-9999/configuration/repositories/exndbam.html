@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>exndbam Repository Format</h1>
+
+<p>The <code>exndbam</code> repository format is used on Exherbo to track packages installed from an exheres. It is not
+used on Gentoo and derived distributions; <a href="vdb.html">VDB</a> serves the equivalent purpose there.</p>
+
+<p>As well as the <a href="index.html">general keys supported for all repositories</a>, the following keys have meaning
+for <code>exndbam</code> format repositories:</p>
+
+<dl>
+    <dt><code>location</code></dt>
+    <dd>The location of the repository. Mandatory.</dd>
+
+    <dt><code>builddir</code></dt>
+    <dd>The directory to use when 'building' a package for an uninstall (a temporary directory is needed for various
+    operations). Optional.</dd>
+
+    <dt><code>root</code></dt>
+    <dd>The root to which this exndbam repository corresponds. Optional.</dd>
+
+    <dt><code>name</code></dt>
+    <dd>The repository's name. Defaults to "installed". Usually only changed if multiple exndbam repositories are
+    required.</dd>
+</dl>
+
+
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

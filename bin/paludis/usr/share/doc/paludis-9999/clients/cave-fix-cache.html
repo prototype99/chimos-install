@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>fix-cache</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave-fix-cache</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave-fix-cache"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave-fix-cache</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave-fix-cache
+     — Fix on-disk caches.
+</p></div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>Fixes on-disk caches. Normally this is handled automatically when needed (e.g. after a sync, or when a package is installed), but a forced fix-cache is required after a different package manager has been used, or if a repository is modified without a sync.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd></dl></div>
+</div>
+<div class="refsect2"><h3>Repositories</h3>
+
+<p>Select repositories whose cache is to be regenerated. If none of these restrictions are specified, all repositories are selected. Otherwise, only repositories matching any of these restrictions are regenerated.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-r , --repository</strong></span>
+</span></dt><dd>
+
+        Select the repository with the specified name. May be specified multiple times.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-i , --installable (+i , --no-installable)</strong></span>
+</span></dt><dd>
+
+        Select all installable repositories.
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-I , --installed (+I , --no-installed)</strong></span>
+</span></dt><dd>
+
+        Select all installed repositories
+
+</dd></dl></div>
+</div>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

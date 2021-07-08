@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="./paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+
+<h1>Paludis</h1>
+
+<ul>
+    <li>We use <a href="http://paludis.exherbo.org/trac/">Trac</a> for bug reports, feature requests etc.</li>
+    <li>You are encouraged to use the <a href="http://lists.exherbo.org/mailman/listinfo/paludis-user">paludis-user</a>
+        mailing list, or the <code>#paludis</code> IRC channel on <code>irc.freenode.net</code>.</li>
+    <li>The current version is 3.0.0. See <a href="news.html">the release notes</a> and <a
+        href="changelog.html">changelog</a>.</li>
+    <li>You should generally install Paludis using your distribution's package manager, rather than by hand. However, if
+        you can't do that, you can <a href="http://paludis.exherbo.org/download/">download Paludis</a> or
+        <a href="http://git.exherbo.org/paludis/paludis.git/">browse the source</a>.</li>
+</ul>
+
+<h2>Overview</h2>
+
+<p>Paludis is a multi-format package manager. It can currently be used on <a href="http://www.gentoo.org/">Gentoo</a>
+and derivatives, using the ebuild and VDB repository formats, and on <a href="http://www.exherbo.org/">Exherbo</a> using
+the exheres repository format.</p>
+
+<ul>
+    <li><a href="overview/features.html">Features</a>: an overview of Paludis, and how it differs from its predecessor,
+    Portage.</li>
+    <li><a href="overview/gettingstarted.html">Getting started</a>: where to begin.</li>
+    <li><a href="overview/pbins.html">Pbins</a>: how to work with binary packages.</li>
+    <li><a href="overview/contact.html">Contact</a>: how to get in touch.</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<ul>
+    <li><a href="faq/general.html">General questions</a> about Paludis.</li>
+    <li><a href="faq/howdoi.html">How do I</a> do and use various things.</li>
+    <li><a href="faq/operation.html">Operation</a> of Paludis.</li>
+    <li><a href="faq/stricter.html">Stricter than Portage</a>: why certain things happen to work with Portage, but not
+    Paludis.</li>
+    <li><a href="faq/misfunctionality.html">Undesirable misfunctionality</a>: why Paludis doesn't do certain
+    things.</li>
+    <li><a href="faq/different.html">Things Paludis does differently</a>: why Paludis does some things differently.</li>
+    <li><a href="faq/repositories.html">Repository questions</a>.</li>
+    <li><a href="faq/upgrades.html">Upgrades, old bugs and migration</a>.</li>
+</ul>
+
+<h2>Configuration</h2>
+
+<p>In general:</p>
+
+<ul>
+    <li><a href="configuration/hooks.html">Hooks</a>: how to execute additional code at well defined points.</li>
+    <li><a href="configuration/syncers.html">Syncers</a>: options for built-in syncers, and how to implement custom sync protocols
+    or override built-in syncers.</li>
+    <li><a href="configuration/fetchers.html">Fetchers</a>: options for built-in fetchers, and how to implement custom URI fetching
+    protocols or replace built-in fetchers.</li>
+    <li><a href="configuration/envvars.html">Environment variables</a> that Paludis itself recognises.</li>
+</ul>
+
+<p>For the 'Paludis' environment:</p>
+
+<ul>
+    <li><a href="configuration/configfiles.html">Configuration file formats</a> in general, including <code>conf.d/</code> directories
+    and <code>.bash</code> dynamic configuration files.</li>
+    <li><a href="configuration/specs.html">Dependency specifications</a> in general.</li>
+    <li><a href="configuration/specpath.html">specpath.conf</a>, and where Paludis looks for configuration files.</li>
+    <li><a href="configuration/general.html">general.conf</a>: for general options.</li>
+    <li><a href="configuration/keywords.html">keywords.conf or platforms.conf</a>: for keywords or platforms.</li>
+    <li><a href="configuration/use.html">use.conf or options.conf</a>: for USE flags or options.</li>
+    <li><a href="configuration/licenses.html">licenses.conf or licences.conf</a>: for licence filtering.</li>
+    <li><a href="configuration/mirrors.html">mirrors.conf</a>: for mirrors.</li>
+    <li><a href="configuration/output.html">output.conf</a>: for output configuration and logging.</li>
+    <li><a href="configuration/packagemask.html">package_mask.conf and package_unmask.conf</a>: for masks.</li>
+    <li><a href="configuration/bashrc.html">bashrc</a>: for package build environment options.</li>
+    <li><a href="configuration/suggestions.html">suggestions.conf</a>: for suggestions.</li>
+    <li><a href="configuration/sets.html">sets/*.conf</a>: for user defined package sets.</li>
+    <li><a href="configuration/repositories/index.html">repositories/*.conf and repository_defaults.conf</a></li>
+</ul>
+
+<h2>Client Documentation</h2>
+
+<p>For users:</p>
+
+<ul>
+    <li><a href="clients/cave.html">cave</a>, the new, improved and modular console package
+    management client.</li>
+</ul>
+
+<h2>API Documentation</h2>
+
+<ul>
+    <li>There are <a href="api/index.html#examples">examples of how to use the API and bindings</a>.</li>
+    <li>The core library code is written in <a href="api/cplusplus/index.html">C++</a>.</li>
+    <li>
+        <p>Bindings are available for:</p>
+        <ul>
+            <li><a href="api/ruby/index.html">Ruby</a></li>
+            <li><a href="api/python/index.html">Python</a></li>
+        </ul>
+    </li>
+</ul>
+
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+

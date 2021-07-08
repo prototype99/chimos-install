@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Paludis, the Other Package Mangler</title>
+<link rel="stylesheet" href="../paludis.css" type="text/css" />
+</head>
+<body>
+
+    <div class="topnav">
+        
+    </div>
+
+    <div class="main">
+
+<h1>cave</h1>
+<p>Sorry, documentation was generated without support for the cave client.</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>cave</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.2"><link rel="home" href="index.html" title="cave"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cave</th></tr></table><hr></div><div lang="en" class="refentry"><div class="titlepage"></div>
+
+
+<div class="refnamediv"><h2>Name</h2><p>
+    cave
+     — A commandline client for the other package mangler.
+</p></div>
+<div class="refsynopsisdiv"><h2>Synopsis</h2>
+<p><span class="strong"><strong>cave [ --environment class:suffix ] [ --log-level level ] COMMAND [ARGS…]</strong></span></p>
+<p><span class="strong"><strong>cave help [ --all ]</strong></span></p>
+</div>
+<div class="refsect1"><h2>DESCRIPTION</h2>
+
+<p>The front-end to a number of commands.</p>
+<p>For the COMMAND argument, see 'cave help' for a list of common commands, or 'cave help --all' for all commands. To see documentation for a command named 'foo', use 'man cave-foo'.</p>
+<p>In addition to built-in commands, cave will also look in the directories named in the colon-separated CAVE_COMMANDS_PATH environment variable, or, if unset, '/usr/libexec/cave/commands'. Any executables in this path will also be available as commands (with any file extension stripped); these executables may use the $CAVE environment variable to get access to the main cave program.</p>
+<p>Arguments specified after the COMMAND are handled by the individual commands. Arguments before the COMMAND are global arguments shared by all commands.</p>
+</div>
+<div class="refsect1"><h2>OPTIONS</h2>
+
+<div class="refsect2"><h3>Global Options</h3>
+
+<p>Global options, used by every subcommand.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>-E , --environment</strong></span>
+</span></dt><dd>
+
+        Environment specification (class:suffix, both parts optional)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-L , --log-level</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify the log level
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>debug (d)</strong></span>
+</span></dt><dd>
+
+        Show debug output (noisy)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>qa (q)</strong></span>
+</span></dt><dd>
+
+        Show QA messages and warnings only (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>warning (w)</strong></span>
+</span></dt><dd>
+
+        Show warnings only
+
+</dd><dt><span class="term">
+<span class="strong"><strong>silent (s)</strong></span>
+</span></dt><dd>
+
+        Suppress all log messages (UNSAFE)
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-c , --colour</strong></span>
+</span></dt><dd>
+<p class="simpara">
+        Specify whether to use colour
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<span class="strong"><strong>auto (a)</strong></span>
+</span></dt><dd>
+
+        Yes if stdout is connected to a terminal (default)
+
+</dd><dt><span class="term">
+<span class="strong"><strong>yes (y)</strong></span>
+</span></dt><dd>
+
+        Yes
+
+</dd><dt><span class="term">
+<span class="strong"><strong>no (n)</strong></span>
+</span></dt><dd>
+
+        No
+
+</dd></dl></div>
+</dd><dt><span class="term">
+<span class="strong"><strong>-h , --help</strong></span>
+</span></dt><dd>
+
+        display help message
+
+</dd><dt><span class="term">
+<span class="strong"><strong>-v , --version</strong></span>
+</span></dt><dd>
+
+        display version information
+
+</dd></dl></div>
+</div>
+</div>
+<div class="refsect1"><h2>ENVIRONMENT</h2>
+
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+CAVE_COMMANDS_PATH
+</span></dt><dd>
+
+Colon-separated paths in which to look for additional commands.
+
+</dd></dl></div>
+</div>
+<div class="refsect1"><h2>SEE ALSO</h2>
+
+<p><span class="strong"><strong>cave-fix-linkage</strong></span>(1)
+<span class="strong"><strong>cave-import</strong></span>(1)
+<span class="strong"><strong>cave-info</strong></span>(1)
+<span class="strong"><strong>cave-purge</strong></span>(1)
+<span class="strong"><strong>cave-report</strong></span>(1)
+<span class="strong"><strong>cave-resolve</strong></span>(1)
+<span class="strong"><strong>cave-resume</strong></span>(1)
+<span class="strong"><strong>cave-search</strong></span>(1)
+<span class="strong"><strong>cave-show</strong></span>(1)
+<span class="strong"><strong>cave-sync</strong></span>(1)
+<span class="strong"><strong>cave-uninstall</strong></span>(1)
+<span class="strong"><strong>cave-config</strong></span>(1)
+<span class="strong"><strong>cave-contents</strong></span>(1)
+<span class="strong"><strong>cave-dump-cave-formats-conf</strong></span>(1)
+<span class="strong"><strong>cave-executables</strong></span>(1)
+<span class="strong"><strong>cave-fix-cache</strong></span>(1)
+<span class="strong"><strong>cave-generate-metadata</strong></span>(1)
+<span class="strong"><strong>cave-help</strong></span>(1)
+<span class="strong"><strong>cave-manage-search-index</strong></span>(1)
+<span class="strong"><strong>cave-owner</strong></span>(1)
+<span class="strong"><strong>cave-size</strong></span>(1)
+<span class="strong"><strong>cave-sync-protocol-options</strong></span>(1)
+<span class="strong"><strong>cave-update-world</strong></span>(1)
+<span class="strong"><strong>cave-verify</strong></span>(1)
+<span class="strong"><strong>cave-digest</strong></span>(1)
+<span class="strong"><strong>cave-mirror</strong></span>(1)
+<span class="strong"><strong>cave-has-version</strong></span>(1)
+<span class="strong"><strong>cave-print-best-version</strong></span>(1)
+<span class="strong"><strong>cave-print-categories</strong></span>(1)
+<span class="strong"><strong>cave-print-checksum</strong></span>(1)
+<span class="strong"><strong>cave-print-checksum-algorithms</strong></span>(1)
+<span class="strong"><strong>cave-print-commands</strong></span>(1)
+<span class="strong"><strong>cave-print-dependent-ids</strong></span>(1)
+<span class="strong"><strong>cave-print-environment-metadata</strong></span>(1)
+<span class="strong"><strong>cave-print-id-actions</strong></span>(1)
+<span class="strong"><strong>cave-print-id-contents</strong></span>(1)
+<span class="strong"><strong>cave-print-id-environment-variable</strong></span>(1)
+<span class="strong"><strong>cave-print-id-executables</strong></span>(1)
+<span class="strong"><strong>cave-print-id-masks</strong></span>(1)
+<span class="strong"><strong>cave-print-id-metadata</strong></span>(1)
+<span class="strong"><strong>cave-print-id-size</strong></span>(1)
+<span class="strong"><strong>cave-print-ids</strong></span>(1)
+<span class="strong"><strong>cave-print-owners</strong></span>(1)
+<span class="strong"><strong>cave-print-packages</strong></span>(1)
+<span class="strong"><strong>cave-print-repositories</strong></span>(1)
+<span class="strong"><strong>cave-print-repository-formats</strong></span>(1)
+<span class="strong"><strong>cave-print-repository-metadata</strong></span>(1)
+<span class="strong"><strong>cave-print-set</strong></span>(1)
+<span class="strong"><strong>cave-print-sets</strong></span>(1)
+<span class="strong"><strong>cave-print-spec</strong></span>(1)
+<span class="strong"><strong>cave-print-sync-protocols</strong></span>(1)
+<span class="strong"><strong>cave-print-unmanaged-files</strong></span>(1)
+<span class="strong"><strong>cave-print-unused-distfiles</strong></span>(1)
+<span class="strong"><strong>cave-display-resolution</strong></span>(1)
+<span class="strong"><strong>cave-execute-resolution</strong></span>(1)
+<span class="strong"><strong>cave-find-candidates</strong></span>(1)
+<span class="strong"><strong>cave-graph-jobs</strong></span>(1)
+<span class="strong"><strong>cave-match</strong></span>(1)
+<span class="strong"><strong>cave-perform</strong></span>(1)
+<span class="strong"><strong>cave-print-resolution-required-confirmations</strong></span>(1)</p>
+</div>
+</div><div class="navfooter"><hr></div>
+<!-- vim: set tw=120 ft=html sw=4 sts=4 et : -->
+</div>
+</body>
+</html>
+
