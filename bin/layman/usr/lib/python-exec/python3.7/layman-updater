@@ -1,0 +1,30 @@
+#!/usr/bin/python3.7
+# -*- coding: utf-8 -*-
+
+################################################################################
+# LAYMAN - A UTILITY TO UPDATE LAYMAN DB's
+################################################################################
+# Distributed under the terms of the GNU General Public License v2
+#
+# Copyright:
+#             (c) 2011 Brian Dolbec
+#             Distributed under the terms of the GNU General Public License v2
+#
+# Author(s):
+#             Brian Dolbec <brian.dolbec@gmail.com>
+#
+
+__version__ = "0.1"
+
+import os
+
+from layman.updater import Main
+
+root = None
+try:
+    root = os.environ['ROOT']
+except KeyError:
+    pass
+
+main = Main(root=root)
+main()
