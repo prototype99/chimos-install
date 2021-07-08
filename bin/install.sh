@@ -14,7 +14,7 @@ sudo mount --rbind /sys sys
 sudo mount --rbind /dev dev
 sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
-sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) /etc/localtime
+sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) ${root}/etc/localtime
 #install layman
 #install paludis
 #install our overlay
