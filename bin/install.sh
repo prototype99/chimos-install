@@ -16,6 +16,15 @@ sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
 sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) ${root}/etc/localtime
 #install layman
+layman=~/chimos-install/bin/
+#layman libraries
+sudo ln -sf ${layman}bin/layman/usr/lib/python3.7/site-packages/layman ${root}/bin/layman/usr/lib/python3.7/site-packages/layman
+#layman portage plug in
+sudo ln -sf ${layman}bin/layman/usr/lib/python3.7/site-packages/portage/sync/modules/laymansync ${root}/bin/layman/usr/lib/python3.7/site-packages/portage/sync/modules/laymansync
+#layman executable
+sudo ln -sf ${layman}usr/lib/python-exec/python3.7/layman ${root}/usr/lib/python-exec/python3.7/layman
+#layman man pages
+sudo ln -sf ${layman}usr/share/man/man8/layman.8.bz2 ${root}/usr/share/man/man8/layman.8.bz2
 #install paludis
 #install our overlay
 mkdir ${root}/var/db/repos
