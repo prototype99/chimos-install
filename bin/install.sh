@@ -118,6 +118,7 @@ sudo ln -sf ${paludis}share/paludis ${root}/usr/share/paludis
 sudo mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
 sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
+sudo mkdir ${root}/etc/layman
 sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #enter the chroot
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l
