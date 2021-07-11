@@ -121,4 +121,5 @@ sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo mkdir ${root}/etc/layman
 sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #enter the chroot
+cd $root
 sudo env -i HOME=/root TERM=$TERM chroot . bash -l
