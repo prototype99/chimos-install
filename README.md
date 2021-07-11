@@ -13,4 +13,6 @@ use this to restore the chroot. in other words, how you access the OS without bo
 6. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches and save the download url to the url file in the aforementioned folder
 7. make sure the fstab file is correct for your system
 8. make sure time matches the desired file in /usr/share/zoneinfo
-9. run sudo ./install.sh
+9. change user to your desired username
+10. put your passwords in the following files (you can always change them later): rpasswd for root password and upasswd for user password
+11. run sudo ./install.sh
