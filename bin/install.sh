@@ -115,7 +115,7 @@ sudo ln -sf ${paludis}share/man/man1/cave-verify.1.bz2 ${root}/usr/share/man/man
 sudo ln -sf ${paludis}share/man/man1/cave.1.bz2 ${root}/usr/share/man/man1/cave.1.bz2
 sudo ln -sf ${paludis}share/paludis ${root}/usr/share/paludis
 #install our overlay
-mkdir ${root}/var/db/repos
+sudo mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
 sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
