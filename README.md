@@ -16,4 +16,7 @@ use this to restore the chroot. in other words, how you access the OS without bo
 9. change user to your desired username
 10. put your passwords in the following files (you can always change them later): rpasswd for root password and upasswd for user password
 11. run ./install.sh
-12. run /chimos-install/bin/user.sh
+12. run useradd -m seirra where seirra is the username, in later entries the assumption is made that you used that username so replace as necessary
+13. run passwd to set a root password
+14. run usermod -G wheel,audio seirra to add the user to all necessary groups
+15. run passwd seirra to set a user password
