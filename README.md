@@ -15,4 +15,5 @@ use this to restore the chroot. in other words, how you access the OS without bo
 8. make sure time matches the desired file in /usr/share/zoneinfo
 9. change user to your desired username
 10. put your passwords in the following files (you can always change them later): rpasswd for root password and upasswd for user password
-11. run sudo ./install.sh
+11. run ./install.sh
+12. run /chimos-install/bin/user.sh
