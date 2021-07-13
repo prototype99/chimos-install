@@ -13,9 +13,10 @@ use this to restore the chroot. in other words, how you access the OS without bo
 6. find a suitable stage 3 (set of base files) at https://www.funtoo.org/Subarches and save the download url to the url file in the aforementioned folder
 7. make sure the fstab file is correct for your system
 8. make sure time matches the desired file in /usr/share/zoneinfo
-9. run ./install.sh
+9. run ./init.sh
 10. run useradd -m seirra where seirra is the username, in later entries the assumption is made that you used that username so replace as necessary
 11. run passwd to set a root password
 12. run usermod -G wheel,audio seirra to add the user to all necessary groups
 13. run passwd seirra to set a user password
 14. run su - seirra
+15. run cd /chimos-install/bin && ./link.sh
