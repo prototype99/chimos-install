@@ -16,15 +16,15 @@ sudo cp /etc/resolv.conf ${root}/etc/
 sudo cp ${var}fstab ${root}/etc/
 sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) ${root}/etc/localtime
 #install layman
-layman=~/chimos-install/bin/
+layman=~/chimos-install/bin/layman/usr/
 #layman libraries
-sudo ln -sf ${layman}bin/layman/usr/lib/python3.7/site-packages/layman ${root}/usr/lib/python3.7/site-packages/layman
+sudo ln -sf ${layman}lib/python3.7/site-packages/layman ${root}/usr/lib/python3.7/site-packages/layman
 #layman portage plug in
-sudo ln -sf ${layman}bin/layman/usr/lib/python3.7/site-packages/portage/sync/modules/laymansync ${root}/usr/lib/python3.7/site-packages/portage/sync/modules/laymansync
+sudo ln -sf ${layman}lib/python3.7/site-packages/portage/sync/modules/laymansync ${root}/usr/lib/python3.7/site-packages/portage/sync/modules/laymansync
 #layman executable
-sudo ln -sf ${layman}usr/lib/python-exec/python3.7/layman ${root}/usr/lib/python-exec/python3.7/layman
+sudo ln -sf ${layman}lib/python-exec/python3.7/layman ${root}/usr/lib/python-exec/python3.7/layman
 #layman man pages
-sudo ln -sf ${layman}usr/share/man/man8/layman.8.bz2 ${root}/usr/share/man/man8/layman.8.bz2
+sudo ln -sf ${layman}share/man/man8/layman.8.bz2 ${root}/usr/share/man/man8/layman.8.bz2
 #install paludis
 paludis=~/chimos-install/bin/paludis/usr/
 sudo ln -sf ${paludis}bin/cave ${root}/usr/bin/cave
