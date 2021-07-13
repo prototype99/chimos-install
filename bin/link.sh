@@ -1,3 +1,5 @@
+#install ssl-fetch
+ln -sf /chimos-install/bin/ssl-fetch/usr/lib/python3.7/site-packages/sslfetch /usr/lib/python3.7/site-packages/sslfetch
 #install layman
 layman=/chimos-install/bin/layman/usr/
 #layman libraries
