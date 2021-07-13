@@ -20,6 +20,7 @@ sudo mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
 sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo mkdir ${root}/etc/layman
+sudo mkdir ${root}/var/lib/layman
 sudo ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #enter the chroot
 cd $root
