@@ -6,6 +6,7 @@ ln -sf ${layman}lib/python3.7/site-packages/layman /usr/lib/python3.7/site-packa
 ln -sf ${layman}lib/python3.7/site-packages/portage/sync/modules/laymansync /usr/lib/python3.7/site-packages/portage/sync/modules/laymansync
 #layman executable
 ln -sf ${layman}lib/python-exec/python3.7/layman /usr/lib/python-exec/python3.7/layman
+ln -sf /usr/lib/python-exec/python3.7/layman /usr/bin/layman
 #layman man pages
 ln -sf ${layman}share/man/man8/layman.8.bz2 /usr/share/man/man8/layman.8.bz2
 #install paludis
