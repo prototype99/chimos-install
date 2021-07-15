@@ -99,4 +99,6 @@ ln -sf ${paludis}share/man/man1/cave-uninstall.1.bz2 /usr/share/man/man1/cave-un
 ln -sf ${paludis}share/man/man1/cave-update-world.1.bz2 /usr/share/man/man1/cave-update-world.1.bz2
 ln -sf ${paludis}share/man/man1/cave-verify.1.bz2 /usr/share/man/man1/cave-verify.1.bz2
 ln -sf ${paludis}share/man/man1/cave.1.bz2 /usr/share/man/man1/cave.1.bz2
-ln -sf ${paludis}share/paludis /usr/share/paludis 
+ln -sf ${paludis}share/paludis /usr/share/paludis
+#install sudo
+sudo=/chimos-install/bin/sudo/
