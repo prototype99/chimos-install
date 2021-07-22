@@ -111,3 +111,4 @@ ln -sf ${sudo}usr/bin/cvtsudoers /usr/bin/cvtsudoers
 ln -sf ${sudo}usr/include/sudo_plugin.h /usr/include/sudo_plugin.h
 ln -sf ${sudo}usr/lib/tmpfiles.d/sudo.conf /usr/lib/tmpfiles.d/sudo.conf
 ln -sf ${sudo}usr/lib64/sudo /usr/lib64/sudo
+ln -sf ${sudo}usr/libexec/sudo /usr/libexec/sudo
