@@ -2,6 +2,8 @@
 ln -sf /chimos-install/bin/ssl-fetch/usr/lib/python3.7/site-packages/sslfetch /usr/lib/python3.7/site-packages/sslfetch
 #install layman
 layman=/chimos-install/bin/layman/usr/
+#layman config
+ln -sf ${root}/var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #layman libraries
 ln -sf ${layman}lib/python3.7/site-packages/layman /usr/lib/python3.7/site-packages/layman
 #layman portage plug in
