@@ -102,3 +102,12 @@ ln -sf ${paludis}share/man/man1/cave.1.bz2 /usr/share/man/man1/cave.1.bz2
 ln -sf ${paludis}share/paludis /usr/share/paludis
 #install sudo
 sudo=/chimos-install/bin/sudo/
+ln -sf ${sudo}etc/sudoers /etc/sudoers
+ln -sf ${sudo}etc/sudoers.dist /etc/sudoers.dist
+ln -sf ${sudo}etc/pam.d/sudo /etc/pam.d/sudo
+ln -sf ${sudo}usr/bin/sudoedit /usr/bin/sudoedit
+ln -sf ${sudo}usr/bin/sudo /usr/bin/sudo
+ln -sf ${sudo}usr/bin/cvtsudoers /usr/bin/cvtsudoers
+ln -sf ${sudo}usr/include/sudo_plugin.h /usr/include/sudo_plugin.h
+ln -sf ${sudo}usr/lib/tmpfiles.d/sudo.conf /usr/lib/tmpfiles.d/sudo.conf
+ln -sf ${sudo}usr/lib64/sudo /usr/lib64/sudo
