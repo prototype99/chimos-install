@@ -102,3 +102,5 @@ ln -sf ${paludis}share/man/man1/cave-update-world.1.bz2 /usr/share/man/man1/cave
 ln -sf ${paludis}share/man/man1/cave-verify.1.bz2 /usr/share/man/man1/cave-verify.1.bz2
 ln -sf ${paludis}share/man/man1/cave.1.bz2 /usr/share/man/man1/cave.1.bz2
 ln -sf ${paludis}share/paludis /usr/share/paludis
+#fetch data for overlays
+layman -f
