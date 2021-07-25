@@ -1,7 +1,7 @@
 #install ssl-fetch
-ln -sf /chimos-install/bin/ssl-fetch/usr/lib/python3.7/site-packages/sslfetch /usr/lib/python3.7/site-packages/sslfetch
+ln -sf /didos-install/bin/ssl-fetch/usr/lib/python3.7/site-packages/sslfetch /usr/lib/python3.7/site-packages/sslfetch
 #install layman
-layman=/chimos-install/bin/layman/usr/
+layman=/didos-install/bin/layman/usr/
 #layman config
 ln -sf /var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #layman libraries
@@ -14,7 +14,7 @@ ln -sf /usr/lib/python-exec/python3.7/layman /usr/bin/layman
 #layman man pages
 ln -sf ${layman}share/man/man8/layman.8.bz2 /usr/share/man/man8/layman.8.bz2
 #install paludis
-paludis=/chimos-install/bin/paludis/usr/
+paludis=/didos-install/bin/paludis/usr/
 ln -sf ${paludis}bin/cave /usr/bin/cave
 ln -sf ${paludis}include/paludis-3.0 /usr/include/paludis-3.0
 ln -sf ${paludis}lib64/libcavematchextras_3.0.so /usr/lib64/libcavematchextras_3.0.so
