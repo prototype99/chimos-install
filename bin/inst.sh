@@ -106,3 +106,5 @@ ln -sf ${paludis}share/paludis /usr/share/paludis
 ln -sf /var/db/repos/prototype99/sys-apps/portage/files/ego-core-kit /etc/portage/repos.conf/ego-core-kit
 #fetch data for overlays
 layman -f
+#enable the overlays
+layman -a ALL
