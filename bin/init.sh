@@ -21,6 +21,9 @@ cd ${root}/var/db/repos
 sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
 sudo mkdir ${root}/etc/layman
 sudo mkdir ${root}/var/lib/layman
+#get rid of default repos and prepare to add our own
+sudo rm -r ${root}/etc/portage/repos.conf
+sudo mkdir ${root}/etc/portage/repos.conf
 #enter the chroot
 cd $root
 sudo mv ~/didos-install ${root}/didos-install
