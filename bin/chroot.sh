@@ -1,6 +1,6 @@
-sudo mount /dev/${dev}$(cat ${var}root) $root
-sudo mount /dev/${dev}$(cat ${var}boot) ${root}/boot
-cd $root
+var=../var/
+sudo mount /dev/$(cat ${var}dev)$(cat ${var}boot) ../../boot
+cd ../..
 sudo mount -t proc none proc
 sudo mount --rbind /sys sys
 sudo mount --rbind /dev dev
