@@ -16,9 +16,11 @@ where you cd into the current mounted didos-install/bin/ location
 7. make sure the fstab file is correct for your system
 8. make sure time matches the desired file in /usr/share/zoneinfo
 9. run ./init.sh
-10. run cd /didos-install/bin && ./inst.sh
-11. run useradd -m seirra where seirra is the username, in later entries the assumption is made that you used that username so replace as necessary
-12. run passwd to set a root password
-13. run usermod -G wheel,audio seirra to add the user to all necessary groups
-14. run passwd seirra to set a user password
-15. run su - seirra
+10. make sure the bottom of /var/db/repos/prototype99/profiles-local/layman.cfg has your git user details correct unless you want to give me free commit history should you make changes to any overlays you installed (how generous!)
+11. run cd /didos-install/bin && ./inst.sh
+12. run emerge dev-vcs/mercurial
+13. run useradd -m seirra where seirra is the username, in later entries the assumption is made that you used that username so replace as necessary
+14. run passwd to set a root password
+15. run usermod -G wheel,audio seirra to add the user to all necessary groups
+16. run passwd seirra to set a user password
+17. run su - seirra
