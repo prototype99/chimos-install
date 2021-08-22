@@ -18,7 +18,7 @@ sudo ln -sf ${root}/usr/share/zoneinfo/$(cat ${var}time) ${root}/etc/localtime
 #install our overlay
 sudo mkdir ${root}/var/db/repos
 cd ${root}/var/db/repos
-sudo git clone -b funtoo https://github.com/prototype99/prototype99.git
+sudo git clone -b funtoo https://github.com/prototype99/didos.git
 sudo mkdir ${root}/etc/layman
 sudo mkdir ${root}/var/lib/layman
 #get rid of default repos and prepare to add our own

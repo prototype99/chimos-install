@@ -3,7 +3,7 @@ ln -sf /didos-install/bin/ssl-fetch/usr/lib/python3.7/site-packages/sslfetch /us
 #install layman
 layman=/didos-install/bin/layman/usr/
 #layman config
-ln -sf /var/db/repos/prototype99/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
+ln -sf /var/db/repos/didos/profiles-local/layman.cfg ${root}/etc/layman/layman.cfg
 #layman libraries
 ln -sf ${layman}lib/python3.7/site-packages/layman /usr/lib/python3.7/site-packages/layman
 #layman portage plug in
@@ -103,7 +103,7 @@ ln -sf ${paludis}share/man/man1/cave-verify.1.bz2 /usr/share/man/man1/cave-verif
 ln -sf ${paludis}share/man/man1/cave.1.bz2 /usr/share/man/man1/cave.1.bz2
 ln -sf ${paludis}share/paludis /usr/share/paludis
 #setup core repository
-ln -sf /var/db/repos/prototype99/sys-apps/portage/files/ego-core-kit /etc/portage/repos.conf/ego-core-kit
+ln -sf /var/db/repos/didos/sys-apps/portage/files/ego-core-kit /etc/portage/repos.conf/ego-core-kit
 #fetch data for overlays
 layman -f
 #enable the overlays
