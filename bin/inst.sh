@@ -102,8 +102,6 @@ ln -sf ${paludis}share/man/man1/cave-update-world.1.bz2 /usr/share/man/man1/cave
 ln -sf ${paludis}share/man/man1/cave-verify.1.bz2 /usr/share/man/man1/cave-verify.1.bz2
 ln -sf ${paludis}share/man/man1/cave.1.bz2 /usr/share/man/man1/cave.1.bz2
 ln -sf ${paludis}share/paludis /usr/share/paludis
-#setup core repository
-ln -sf /var/db/repos/didos/sys-apps/portage/files/ego-core-kit /etc/portage/repos.conf/ego-core-kit
 #fetch data for overlays
 layman -f
 #enable the overlays
